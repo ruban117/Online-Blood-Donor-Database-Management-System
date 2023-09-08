@@ -1,0 +1,1 @@
+Users fill out registration forms, receive verification emails, and enter OTPs for validation.
