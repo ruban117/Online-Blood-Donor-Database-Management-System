@@ -1,0 +1,69 @@
+.inner{
+    position: relative;
+    height:50px; 
+    background-color:#FE0000;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top: 80px;
+}
+
+.heading h3{
+    color: #ffffff;
+}
+
+.inner2{
+    position: relative;
+    height: 600px;
+    background-color: #D9D9D9;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top: 78px;
+}
+
+.loginform{
+    height: 450px;
+    width: 500px;
+    background-color: #ffffff;
+}
+
+/* Style the heading */
+.stylish-underline {
+    position: relative; /* Allows us to position the underline relative to the heading */
+    color: #FE0000; /* Customize the text color */
+    font-size: 24px; /* Customize the font size */
+    text-align: center;
+    font-weight: bold;
+    top: 10px;
+}
+
+/* Create the underline effect using a pseudo-element */
+.stylish-underline::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position the underline absolutely */
+    bottom: -3px; /* Position it slightly below the text */
+    top: 40px;
+    left: 122px; /* Start from the left edge of the heading */
+    width: 50%; /* Make it span the full width of the heading */
+    height: 2px; /* Customize the underline's thickness */
+    background-color: #FE0000; /* Customize the underline color */
+    font-weight: bold;
+}
+
+.formfield{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 60px;
+}
+
+
+#new{
+    position: relative;
+    top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
