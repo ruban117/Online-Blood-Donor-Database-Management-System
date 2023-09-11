@@ -35,10 +35,10 @@
         <h2>Donor</h2>
         <ul>
             <li id="li1"><a href="#" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
-            <li id="li1"><a href="#" id="D"><i class="fas fa-home"></i>Availaibility Status</a></li>
-            <li id="li2"><a href="#" id="P"><i class="fas fa-user"></i>Profile</a></li>
-            <li id="li3"><a href="#" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
-            <li id="li4"><a href="#" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
+            <li id="li2"><a href="#" id="A"><i class="fas fa-home"></i>Availaibility Status</a></li>
+            <li id="li3"><a href="#" id="P"><i class="fas fa-user"></i>Profile</a></li>
+            <li id="li4"><a href="#" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
+            <li id="li5"><a href="#" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
             <li><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></li>
         </ul> 
     </div>
@@ -47,7 +47,9 @@
         <div class="info Dashboard">
           <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
         </div>
-       
+        <div id="Availibility" style="display: none;align-items: center;justify-content: center;">
+            
+        </div>
         <div id="Profile">
             <div class="profile-pic" ></div>
             <div class="Text" >John Doe</div>
@@ -57,41 +59,31 @@
             <div class="Text" >West Bengal</div>
             <div class="Text" >Naihati</div>
         </div>
-        <div id="Edit_Profile" style="display: none;align-items: center;justify-content: center;">
-            <div class="container">
-                <form>
-                    <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Phone Number</label>
-                        <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control custom-input" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Pin Code</label>
-                        <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="color">Blood Group</label><br>
-                        <select id="color" name="color" class="form-control custom-input">
-                            <option value="red">Red</option>
-                            <option value="green">Green</option>
-                            <option value="blue">Blue</option>
-                            <option value="yellow">Yellow</option>
-                            <option value="orange">Orange</option>
-                        </select>
-                    </div>
+            <div id="Edit_Profile" style="display: none;align-items: center;justify-content: center;">
+                <div class="container">
+                    <form>
                         <div class="form-group">
-                            <label for="color">State</label><br>
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Phone Number</label>
+                            <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control custom-input" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Pin Code</label>
+                            <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="color">Blood Group</label><br>
                             <select id="color" name="color" class="form-control custom-input">
                                 <option value="red">Red</option>
                                 <option value="green">Green</option>
@@ -99,20 +91,30 @@
                                 <option value="yellow">Yellow</option>
                                 <option value="orange">Orange</option>
                             </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">City</label>
-                        <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Example file input</label><br>
-                        <input type="file" class="form-control-file custom-input" id="exampleFormControlFile1">
-                      </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </form>
-            </div>
-        </div>
+                        </div>
+                            <div class="form-group">
+                                <label for="color">State</label><br>
+                                <select id="color" name="color" class="form-control custom-input">
+                                    <option value="red">Red</option>
+                                    <option value="green">Green</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="yellow">Yellow</option>
+                                    <option value="orange">Orange</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">City</label>
+                            <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Example file input</label><br>
+                            <input type="file" class="form-control-file custom-input" id="exampleFormControlFile1">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>    
         <div id="Change_Password" style="display: none;align-items: center;justify-content: center;">
             <div class="container">
                 <form>
@@ -132,15 +134,6 @@
                   </form>
             </div>
         </div>
-        <div id="View_All_donors" style="display: none;align-items: center;justify-content: center; height:fit-content; width: 100%;">
-            <iframe src="viewalldonor.html" frameborder="0" style="height: 600px" width="90%"></iframe>
-        </div>
-        <div id="View_All_requesters" style="display: none;align-items: center;justify-content: center;">
-         <iframe src="viewallrequesters.html" frameborder="0" style="height: 600px" width="90%"></iframe>
-          </div>
-        <div id="View_All_reports" style="display: none;align-items: center;justify-content: center;">
-          <iframe src="viewallreports.html" frameborder="0" style="height: 600px" width="90%"></iframe>
-        </div>
     </div>
 </div>
 <?php
@@ -149,10 +142,7 @@
 <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script  src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script  src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-<script src="adminscript.js"></script>
-<script>
-  let table = new DataTable('#myTable');
-</script>
+<script src="donorscript.js"></script>
 
 
 </body>
