@@ -48,7 +48,23 @@
           <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
         </div>
         <div id="Availibility" style="display: none;align-items: center;justify-content: center;">
-            
+            <div class="instructions">
+                <p class="stylish-underline">Instructions</p>
+                <ul class="ins">
+                    <li>Age between 18-60 years</li>
+                    <li> Hemoglobin not less than 12.5gm/DI </li>
+                    <li>Pulse Between 50 and 100/min with no irregularities.</li>
+                    <li>Blood pressure-systolic 100 to 180 mm Hg and Diastolic 50 to 100 mm Hg.</li>
+                    <li> Temperature-normal</li>
+                    <li>Body weight not less than 45k.g </li>
+                    <li>Any healthy adult both male and female can donate blood in every 3 months.</li>
+                    <li> Donors should not have any conical disease.</li>
+
+                </ul>
+            </div>
+            <div class="availability">
+
+            </div>
         </div>
         <div id="Profile">
             <div class="profile-pic" ></div>
