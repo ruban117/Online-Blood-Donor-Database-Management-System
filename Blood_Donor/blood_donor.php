@@ -59,11 +59,16 @@
                     <li>Body weight not less than 45k.g </li>
                     <li>Any healthy adult both male and female can donate blood in every 3 months.</li>
                     <li> Donors should not have any conical disease.</li>
+                    <li style="color:#fe0000;font-weight:bold;"> Scroll Down to change your availability status</li>
 
                 </ul>
             </div>
             <div class="availability">
-
+                <p>Note:- If you click on the yes button your profile will be hided from all consumers</p>
+                <div class="buttons">
+                <button type="submit" class="btn btn-danger">YES</button>
+                <button type="submit" class="btn btn-danger">NO</button>
+                </div>
             </div>
         </div>
         <div id="Profile">
