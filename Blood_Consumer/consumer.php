@@ -52,10 +52,10 @@
             </div>
             <div id="Availibility" style="display: none;align-items: center;justify-content: center;">
                 <div class="instructions">
-                    <form>
+                    <form method="post">
                             <div class="form-group col-md-4">
                                 <label for="inputState">Blood Group</label>
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="CS">
                                     <option selected>Choose...</option>
                                     <option>A+</option>
                                     <option>A-</option>
@@ -69,10 +69,10 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputZip">Pin Code</label>
-                                <input type="text" class="form-control" id="inputZip">
+                                <input type="text" class="form-control" id="inputZip" name="CPI">
                             </div>
+                            <button type="submit" class="btn btn-primary" id="sub" >Search Here</button>        
                     </form>
-                    <button type="submit" class="btn btn-primary" id="sub">Search Here</button>
                 </div>
                 <h1 class="search_heading">Search Results</h1>
                 <div class="availability">
@@ -90,11 +90,11 @@
             </div>
             <div id="Edit_Profile" style="display: none;align-items: center;justify-content: center;">
                 <div class="container">
-                    <form>
+                    <form  method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control custom-input" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter email">
+                                aria-describedby="emailHelp" placeholder="Enter Name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
@@ -152,21 +152,21 @@
             </div>
             <div id="Change_Password" style="display: none;align-items: center;justify-content: center;">
                 <div class="container">
-                    <form>
+                    <form method="post">
                         <div class="form-group custom-form">
                             <label for="exampleInputEmail1">Enter Previous Password</label>
                             <input type="password" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" name="PP">
                         </div>
                         <div class="form-group custom-form">
                             <label for="exampleInputPassword1">Enter New Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="NP">
                         </div>
                         <div class="form-group custom-form">
                             <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="CP">
                         </div>
-                        <button type="submit" class="btn btn-primary">Set Password</button>
+                        <button type="submit" class="btn btn-primary" name="CSB">Set Password</button>
                     </form>
                 </div>
             </div>

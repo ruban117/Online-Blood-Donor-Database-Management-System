@@ -84,7 +84,6 @@ ul {
 
 #Availibility h1{
   color: #fe0000;
-  display: none;
 }
 
 .propic{
@@ -178,7 +177,7 @@ ul {
 .availability {
   height: 60%;
   width: 90%;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;

@@ -3,11 +3,6 @@ var a=document.getElementById('D');
     var c=document.getElementById('P');
     var d=document.getElementById('EP');
     var e=document.getElementById('CP');
-    var f=document.getElementById('sub');
-      f.addEventListener('click',(e)=>{
-        document.getElementsByTagName('h1')[0].style.display='flex';
-        document.getElementsByClassName('availability')[0].style.display='flex';
-      })
       b.addEventListener('click',(e)=>{
           document.getElementsByClassName('Dashboard')[0].style.display='none';
           document.getElementsByTagName('img')[0].style.display='none';
