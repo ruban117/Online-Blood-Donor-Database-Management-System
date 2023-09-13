@@ -38,7 +38,7 @@
             <h2>BLOOD REQUESTERS</h2>
             <ul>
                 <li id="li1"><a href="#" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
-                <li id="li2"><a href="#" id="A"><i class="fas fa-home"></i>Availaibility Status</a></li>
+                <li id="li2"><a href="#" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>
                 <li id="li3"><a href="#" id="P"><i class="fas fa-user"></i>Profile</a></li>
                 <li id="li4"><a href="#" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
                 <li id="li5"><a href="#" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
