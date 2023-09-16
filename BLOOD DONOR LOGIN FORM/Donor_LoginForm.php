@@ -26,17 +26,17 @@
     <div class="loginform">
       <h1 class="stylish-underline">Log in</h1>
       <div class="formfield">
-        <form>
+        <form action="" method="post">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" name="pass" class="form-control" id="pass">
           </div>
 
-          <button type="submit" class="btn btn-primary text-center">Submit</button>
+          <button type="submit" class="btn btn-primary text-center" name="sub">Submit</button>
         </form>
         <p id="new">New User? <span style="color:#fe0000;">Sign Up</span></p>
       </div>
