@@ -24,7 +24,7 @@
 .headerpic {
     background-image: url('header.png');
     background-size: cover;
-    height: 700px;
+    height: 800px;
     width: 100%;
 }
 .quotations {
@@ -232,7 +232,7 @@
         font-size: 22px;
     }
 }
-@media (min-width:1025px) and (max-width:1441px){
+/*@media (min-width:1025px) and (max-width:1441px){
     .headerpic {
         background-size: cover;
         height: 809px;
@@ -266,4 +266,41 @@
         opacity: 55%;
         font-size: 26px;
     }
+}*/
+.login{
+    height: 500px;
+    background-color: #ffffff;
+    position: relative;
+    top:31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.heading{
+    height: 200px;
+    width: 1000px;
+    color: #fe0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading hr{
+    border: 1px solid #fe0000;
+    opacity: 100%;
+}
+.buttons{
+    height: 200px;
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.buttons .btn{
+    height: 80px;
+    width: 400px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #dc2a3c;
+    font-size: 25px;
 }
