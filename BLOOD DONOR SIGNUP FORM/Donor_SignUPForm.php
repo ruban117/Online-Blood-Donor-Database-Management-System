@@ -108,7 +108,6 @@
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
           </div>
           <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Submit</button>
-          </button>
         </form>
         <p id="new">Back to <a href="#" style="color:#fe0000;">LogIn</a></p>
       </div>
