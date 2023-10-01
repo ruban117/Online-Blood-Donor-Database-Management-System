@@ -1,0 +1,33 @@
+.navbar .navbar-brand {
+    color: #fe0000;
+}
+
+.navbar .nav-item .nav-link {
+    color: #fe0000;
+    font-weight: bold;
+}
+
+.navbar .container-fluid {
+    background-color: #f5f5f5;
+}
+.pos{
+    position: relative;
+    top: 55px;
+}
+h1{
+    color: #fe0000;
+}
+.middle{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+}
+.pic{
+    height: 150px;
+    width:150px;
+}
+.textmid{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
