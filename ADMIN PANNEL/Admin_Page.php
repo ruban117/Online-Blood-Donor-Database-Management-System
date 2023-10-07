@@ -41,6 +41,8 @@
             <li id="li5"><a href="#" id="VAD"><i class="fa-solid fa-eye"></i>View All Donors</a></li>
             <li id="li6"><a href="#" id="VAR"><i class="fa-solid fa-eye"></i>View All Requesters</a></li>
             <li id="li7"><a href="#" id="VARE"><i class="fa-solid fa-eye"></i>View All Reports</a></li>
+            <li id="li8"><a href="#" id="VASF"><i class="fa-solid fa-eye"></i>View All Site Feedback</a></li>
+            <li id="li9"><a href="#" id="VACP"><i class="fa-solid fa-eye"></i>View All Contacted People</a></li>
             <li><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></li>
         </ul> 
     </div>
@@ -152,6 +154,12 @@
           </div>
         <div id="View_All_reports" style="display: none;align-items: center;justify-content: center;">
           <iframe src="viewallreports.html" frameborder="0" style="height: 600px" width="90%"></iframe>
+        </div>
+        <div id="View_All_SF" style="display: none;align-items: center;justify-content: center;">
+         <iframe src="viewallsf.html" frameborder="0" style="height: 600px" width="90%"></iframe>
+        </div>
+        <div id="View_All_CP" style="display: none;align-items: center;justify-content: center;">
+         <iframe src="viewallcp.html" frameborder="0" style="height: 600px" width="90%"></iframe>
         </div>
     </div>
 </div>

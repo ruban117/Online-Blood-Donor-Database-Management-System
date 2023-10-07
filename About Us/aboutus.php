@@ -79,9 +79,9 @@
                 ducimus ipsum sunt omnis nulla laudantium? Debitis suscipit facere itaque sunt beatae facilis
                 reprehenderit soluta quisquam vel ea nam commodi assumenda officia sit totam qui, saepe dolorem tempora
                 impedit dicta repudiandae provident incidunt eius. Eaque praesentium sint dolores?</div>
-            <hr>
         </div>
     </div>
+    <?php include "Assests/_footer.php" ?>
 </body>
 
 </html>
