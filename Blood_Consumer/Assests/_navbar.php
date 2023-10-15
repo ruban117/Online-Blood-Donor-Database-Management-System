@@ -46,7 +46,7 @@ echo '
             <a class="nav-link" href="../About Us/aboutus.php">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Admin Login</a>
+            <a class="nav-link" href="../Admin Login/Admin_login.php">Admin Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../Contact Us/contact.php">Contact Us</a>
