@@ -9,7 +9,6 @@
         public function __construct(){
             try{
                 $this->conn=new PDO($this->dsn,$this->user,$this->pass);
-                //echo "Connected";
             }
             catch(PDOException $e){
                 echo $e->getMessage();
@@ -35,6 +34,13 @@
             } else {
                 return null; // or handle the case where no user is found
             }
+        }
+
+        public function ViewProfile($email){
+            $sql= "SELECT * FROM admin WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['email' => $email]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
 
         public function Exists($email) {
@@ -71,12 +77,15 @@
             return $result;
         }
 
-        public function updateUser($email, $imagePath) {
+        public function updateUser($email, $name, $pno, $add, $pin, $bgroup, $state, $city) {
+            $sql = "UPDATE admin SET name = :name, phoneno =:pno, address =:add, pin_code =:pin, blood_group = :bgroup, state = :state, city = :city WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['email' => $email , 'name'=> $name, 'pno'=> $pno, 'add'=> $add, 'pin'=> $pin, 'bgroup'=> $bgroup, 'state'=> $state, 'city'=> $city]);
+        }
+        public function updateUserImg($email, $imagePath) {
             $sql = "UPDATE admin SET picture = :imagePath WHERE email = :email";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':imagePath', $imagePath);
-            $stmt->execute();
+            $stmt->execute(['email' => $email , 'imagePath'=> $imagePath]);
         }
         
         

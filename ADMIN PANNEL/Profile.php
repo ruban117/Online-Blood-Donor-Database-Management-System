@@ -8,25 +8,7 @@
     }
 
     $user=$db->getUserByEmail($_SESSION['uname']);
-    if (isset($_POST['submit'])) {
-        $user = $db->getUserByEmail($_SESSION['uname']);
-        
-        // Check if a file was uploaded
-        if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-            $uploadDir = '../images/'; 
-            $imageFile = $uploadDir . basename($_FILES['image']['name']);
-            
-            // Move the uploaded image to the desired directory
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $imageFile)) {
-                // Update the user's profile picture in the database
-                $db->updateUser($_SESSION['uname'], $imageFile);
-                header("location: Admin_Page.php");
-            } else {
-                echo "Error uploading the image.";
-            }
-        }
-    }
-
+    $datas=$db->ViewProfile($_SESSION['uname']);
     
 
 ?>
@@ -84,12 +66,12 @@
     <div class="main_content">
         <div id="Profile">
             <div class="profile-pic" ><img src="<?php echo $user['picture'];?>" ></div>
-            <div class="Text" >John Doe</div>
-            <div class="Text" >johndoe@gmail.com</div>
-            <div class="Text" >6289814242</div>
-            <div class="Text" >28, South Baishnav Para Road Post Garifa Dist 24 PGS North</div>
-            <div class="Text" >West Bengal</div>
-            <div class="Text" >Naihati</div>
+            <div class="Text" ><?php echo $datas['name'];?></div>
+            <div class="Text" ><?php echo $datas['email'];?></div>
+            <div class="Text" ><?php echo $datas['phoneno'];?></div>
+            <div class="Text" ><?php echo $datas['address'];?></div>
+            <div class="Text" ><?php echo $datas['state'];?></div>
+            <div class="Text" ><?php echo $datas['city'];?></div>
         </div>
     </div>
 </div>

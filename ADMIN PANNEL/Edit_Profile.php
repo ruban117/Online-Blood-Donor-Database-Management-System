@@ -9,7 +9,18 @@
 
     $user=$db->getUserByEmail($_SESSION['uname']);
     if (isset($_POST['submit'])) {
+
         $user = $db->getUserByEmail($_SESSION['uname']);
+        $name=$_POST['name'];
+        $ph=$_POST['pno'];
+        $add=$_POST['add'];
+        $pin=$_POST['pin'];
+        $bgroup=$_POST['bgroup'];
+        $state=$_POST['state'];
+        $city=$_POST['city'];
+
+        $db->updateUser($_SESSION['uname'], $name, $ph, $add, $pin, $bgroup, $state, $city);
+        header("location: Edit_Profile.php");
         
         // Check if a file was uploaded
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -19,7 +30,7 @@
             // Move the uploaded image to the desired directory
             if (move_uploaded_file($_FILES['image']['tmp_name'], $imageFile)) {
                 // Update the user's profile picture in the database
-                $db->updateUser($_SESSION['uname'], $imageFile);
+                $db->updateUserImg($_SESSION['uname'], $imageFile);
                 //header("location: Edit_Profile.php");
             } else {
                 echo "Error uploading the image.";
@@ -85,27 +96,27 @@
                 <form method="post" action="" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $user['name'];?>" placeholder="Enter Name">
+                    <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" value="<?php echo $user['name'];?>" placeholder="Enter Name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo $_SESSION['uname'];?>" disabled>
+                        <input type="email" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter email" value="<?php echo $_SESSION['uname'];?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Phone Number</label>
-                        <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $user['phoneno'];?>" placeholder="Enter phone">
+                        <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" name="pno" value="<?php echo $user['phoneno'];?>" placeholder="Enter phone">
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control custom-input" id="inputAddress" value="<?php echo $user['address'];?>" placeholder="Enter Address">
+                        <input type="text" class="form-control custom-input" id="inputAddress" value="<?php echo $user['address'];?>" name="add" placeholder="Enter Address">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Pin Code</label>
-                        <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $user['pin_code'];?>" placeholder="Enter Pin Code">
+                        <input type="number" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" name="pin" value="<?php echo $user['pin_code'];?>" placeholder="Enter Pin Code">
                     </div>
                     <div class="form-group">
                         <label for="color">Blood Group</label><br>
-                        <select id="color"  name="color" class="form-control custom-input">
+                        <select id="color" name="bgroup"  class="form-control custom-input">
                             <option value="<?php echo $user['blood_group'];?>" selected><?php echo $user['blood_group'];?></option>
                             <option value="red">Red</option>
                             <option value="green">Green</option>
@@ -116,7 +127,7 @@
                     </div>
                         <div class="form-group">
                             <label for="color">State</label><br>
-                            <select id="color" name="color" class="form-control custom-input">
+                            <select id="color" name="state" class="form-control custom-input">
                             <option value="<?php echo $user['state'];?>" selected><?php echo $user['state'];?></option>
                                 <option value="red">Red</option>
                                 <option value="green">Green</option>
@@ -127,7 +138,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">City</label>
-                        <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $user['city'];?>"  placeholder="Enter City">
+                        <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" name="city" value="<?php echo $user['city'];?>"  placeholder="Enter City">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Example file input</label><br>
