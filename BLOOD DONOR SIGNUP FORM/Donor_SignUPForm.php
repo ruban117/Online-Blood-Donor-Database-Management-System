@@ -1,3 +1,51 @@
+<?php
+
+require_once '../BLOOD DONOR LOGIN FORM/donordb.php';
+$db=new Donordb();
+$has_error=false;
+$error="";
+if(isset($_POST['sub']))
+{
+  $name=$_POST['name'];
+  $email=$_POST['email'];
+  $phone=$_POST['phone'];
+  $address=$_POST['address'];
+  $pin=$_POST['pin'];
+  $blood_group=$_POST['bgroup'];
+  $state=$_POST['state'];
+  $city=$_POST['city'];
+  $password=$_POST['pass'];
+  $confirm_password=$_POST['cpass'];
+  $age=$_POST['age'];
+  if($db->exists($email)==1)
+  {
+    $has_error=true;
+    $error="email already exists";
+  }
+  else if($password!=$confirm_password)
+  {
+    $has_error=true;
+    $error="password did not matched";
+
+  }
+  else if($age<18)
+  {
+    $has_error=true;
+    $error="unable to create account ! because you are not adult";
+  }
+  else
+  {
+    $otp=$db->generateOTP();
+    session_start();
+    $_SESSION['loggedin']=true;
+    $_SESSION['otp'];
+
+  }
+  
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -23,30 +71,31 @@
     <div class="loginform">
       <h1 class="stylish-underline" style="color: #fe0000;">Signup</h1>
       <div class="formfield">
-        <form id="signup-form" method="post">
+        
+        <form method="post" action="">
           <div class="mb-3">
-            <label for="email" class="form-label">Name</label>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
             <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
-            <label for="name" class="form-label">Email address</label>
-            <input type="text" name="D_Name" class="form-control" id="email" aria-describedby="emailHelp">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="number" name="phone" class="form-control" id="pass">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Phone Number</label>
-            <input type="number" name="number" class="form-control" id="pass">
+            <label for="address">Address</label>
+            <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1">Address</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Pin Code</label>
+            <label for="pin_code" class="form-label">Pin Code</label>
             <input type="number" name="pin" class="form-control" id="pass">
           </div>
           <div class="mb-3">
-            <label for="inputState">Blood Group</label>
-            <select id="inputState" class="form-control">
+            <label for="blood_group">Blood Group</label>
+            <select id="inputState" name="bgroup" class="form-control">
               <option selected>Choose...</option>
               <option>A+</option>
               <option>A-</option>
@@ -59,8 +108,8 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
+            <label for="state">State</label>
+            <select id="inputState" name="state" class="form-control">
               <option selected>Choose...</option>
               <option>Andhra Pradesh</option>
               <option>Arunachal Pradesh</option>
@@ -92,59 +141,35 @@
             </select>
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">City</label>
-            <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <label for="city" class="form-label">City</label>
+            <input type="text" name="city" class="form-control" id="email" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <label for="password" class="form-label">Password</label>
             <input type="password" name="pass" class="form-control" id="pass">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-            <input type="password" name="pass" class="form-control" id="pass">
+            <label for="cpassword" class="form-label">Confirm Password</label>
+            <input type="password" name="cpass" class="form-control" id="pass">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlFile1">Upload Your Picture</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <label for="picture">Upload Your Picture</label>
+            <input type="file" class="form-control-file" name="picture" id="exampleFormControlFile1">
           </div>
-          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Submit</button>
+          <div class="mb-3">
+            <label for="age" class="form-label">age</label>
+            <input type="number" name="age" class="form-control" id="pass">
+          </div>
+          <button type="submit" class="btn btn-primary" name="sub">Submit</button>
         </form>
-        <p id="new">Back to <a href="#" style="color:#fe0000;">LogIn</a></p>
+        <p id="new">Back to <a href="../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php" style="color:#fe0000;">LogIn</a></p>
       </div>
     </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">An OTP Is Send To Your Gmail Please Enter To Continue</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Enter OTP</label>
-              <input type="number" name="pass" class="form-control" id="pass">
-            </div>
-            <button type="button" class="btn btn-primary" name="otpsub">Submit OTP</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <?php include "Assests/_footer.php" ?>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    // jQuery to handle the form submission and show the modal
-    $(document).ready(function () {
-      $("#signup-form").submit(function (event) {
-        console.log("opened")
-        event.preventDefault();
-        $("#myModal").modal("show");
-      });
-    });
-  </script>
+  
 </body>
 
 </html>
