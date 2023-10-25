@@ -88,6 +88,11 @@
             $stmt->execute(['email' => $email , 'imagePath'=> $imagePath]);
         }
         
+        public function updatePassword($email, $pass){
+            $sql = "UPDATE admin SET password = :pass WHERE email = :email";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['email' => $email, 'pass' => $pass]);
+        }
         
 
         public function smtp_mailer($to,$subject, $msg){

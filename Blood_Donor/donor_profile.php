@@ -43,11 +43,17 @@
         </ul> 
     </div>
     <div class="main_content">
-        <div class="header Dashboard">Welcome Blood Donor Name </div>  
-        <div class="info Dashboard">
-          <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
+        <div id="Profile">
+            <div class="profile-pic" ></div>
+            <div class="Text" >John Doe</div>
+            <div class="Text" >johndoe@gmail.com</div>
+            <div class="Text" >6289814242</div>
+            <div class="Text" >28, South Baishnav Para Road Post Garifa Dist 24 PGS North</div>
+            <div class="Text" >West Bengal</div>
+            <div class="Text" >Naihati</div>
         </div>
     </div>
+            
 </div>
 <?php
     include "Assests/_footer.php";

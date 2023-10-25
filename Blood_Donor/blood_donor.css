@@ -294,7 +294,7 @@ ul {
 
 
 .main_content #Profile {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
@@ -307,7 +307,6 @@ ul {
   width: 100px;
   border: 2px solid black;
   border-radius: 50%;
-  background-image: url("Pictures/Profile-Avtaar.png");
   background-size: cover;
 }
 

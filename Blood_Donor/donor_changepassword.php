@@ -43,9 +43,24 @@
         </ul> 
     </div>
     <div class="main_content">
-        <div class="header Dashboard">Welcome Blood Donor Name </div>  
-        <div class="info Dashboard">
-          <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
+        <div id="Change_Password" style="display: flex;align-items: center;justify-content: center;">
+            <div class="container">
+                <form>
+                    <div class="form-group custom-form">
+                      <label for="exampleInputEmail1">Enter Previous Password</label>
+                      <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group custom-form">
+                      <label for="exampleInputPassword1">Enter New Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group custom-form">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                      </div>
+                    <button type="submit" class="btn btn-primary">Set Password</button>
+                  </form>
+            </div>
         </div>
     </div>
 </div>

@@ -43,9 +43,29 @@
         </ul> 
     </div>
     <div class="main_content">
-        <div class="header Dashboard">Welcome Blood Donor Name </div>  
-        <div class="info Dashboard">
-          <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
+        <div id="Availibility" style="display: flex;align-items: center;justify-content: center;">
+            <div class="instructions">
+                <p class="stylish-underline">Instructions</p>
+                <ul class="ins">
+                    <li>Age between 18-60 years</li>
+                    <li> Hemoglobin not less than 12.5gm/DI </li>
+                    <li>Pulse Between 50 and 100/min with no irregularities.</li>
+                    <li>Blood pressure-systolic 100 to 180 mm Hg and Diastolic 50 to 100 mm Hg.</li>
+                    <li> Temperature-normal</li>
+                    <li>Body weight not less than 45k.g </li>
+                    <li>Any healthy adult both male and female can donate blood in every 3 months.</li>
+                    <li> Donors should not have any conical disease.</li>
+                    <li style="color:#fe0000;font-weight:bold;"> Scroll Down to change your availability status</li>
+
+                </ul>
+            </div>
+            <div class="availability">
+                <p>Note:- If you click on the yes button your profile will be hided from all consumers</p>
+                <div class="buttons">
+                <button type="submit" class="btn btn-danger">YES</button>
+                <button type="submit" class="btn btn-danger">NO</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
