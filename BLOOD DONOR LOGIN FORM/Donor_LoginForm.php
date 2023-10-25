@@ -39,7 +39,7 @@
           <button type="submit" class="btn btn-primary text-center" name="sub">Submit</button>
         </form>
         <p class="forget" data-toggle="modal" data-target="#myModal">Forget Password?</p>
-        <p id="new">New User? <a href="Donor_SignUPForm.php" style="color:#fe0000;">Sign Up</a></p>
+        <p id="new">New User? <a href="../BLOOD DONOR SIGNUP FORM/Donor_SignUPForm.php" style="color:#fe0000;">Sign Up</a></p>
       </div>
     </div>
   </div>
