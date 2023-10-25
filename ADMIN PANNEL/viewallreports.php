@@ -83,7 +83,7 @@
     </div>
     <div class="main_content">
         <div id="View_All_reports" style="display: flex;align-items: center;justify-content: center;">
-          <iframe src="viewallreports.html" frameborder="0" style="height: 600px" width="90%"></iframe>
+          <iframe src="viewallreportsfr.php" frameborder="0" style="height: 600px" width="90%"></iframe>
         </div>
     </div>
 </div>
