@@ -75,7 +75,7 @@
             <li id="li4"><a href="changepassword.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
             <li id="li5"><a href="viewalldonors.php" id="VAD"><i class="fa-solid fa-eye"></i>View All Donors</a></li>
             <li id="li6"><a href="viewallrequesters.php" id="VAR"><i class="fa-solid fa-eye"></i>View All Requesters</a></li>
-            <li id="li7"><a href="viewallreports.php" id="VARE"><i class="fa-solid fa-eye"></i>View All Reports</a></li>
+            <li id="li7" style="background-color: #594f8d;"><a href="viewallreports.php" id="VARE"><i class="fa-solid fa-eye"></i>View All Reports</a></li>
             <li id="li8"><a href="vacf.php" id="VASF"><i class="fa-solid fa-eye"></i>View All Site Feedback</a></li>
             <li id="li9"><a href="vacp.php" id="VACP"><i class="fa-solid fa-eye"></i>View All Contacted People</a></li>
             <li><a href="../Admin Login/logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>

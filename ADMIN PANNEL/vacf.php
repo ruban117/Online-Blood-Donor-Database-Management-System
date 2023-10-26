@@ -76,7 +76,7 @@
             <li id="li5"><a href="viewalldonors.php" id="VAD"><i class="fa-solid fa-eye"></i>View All Donors</a></li>
             <li id="li6"><a href="viewallrequesters.php" id="VAR"><i class="fa-solid fa-eye"></i>View All Requesters</a></li>
             <li id="li7"><a href="viewallreports.php" id="VARE"><i class="fa-solid fa-eye"></i>View All Reports</a></li>
-            <li id="li8"><a href="vacf.php" id="VASF"><i class="fa-solid fa-eye"></i>View All Site Feedback</a></li>
+            <li id="li8" style="background-color: #594f8d;"><a href="vacf.php" id="VASF"><i class="fa-solid fa-eye"></i>View All Site Feedback</a></li>
             <li id="li9"><a href="vacp.php" id="VACP"><i class="fa-solid fa-eye"></i>View All Contacted People</a></li>
             <li><a href="../Admin Login/logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
         </ul> 
