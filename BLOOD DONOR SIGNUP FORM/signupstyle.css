@@ -75,3 +75,7 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.formfield .f{
+    width: 200px;
+}

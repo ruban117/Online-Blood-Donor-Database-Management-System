@@ -93,6 +93,18 @@
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['email' => $email, 'pass' => $pass]);
         }
+
+        public function ReadDonors(){
+            $data=array();
+            $sql="SELECT * FROM donor";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[]=$row;
+            }
+            return $data;
+         }
         
 
         public function smtp_mailer($to,$subject, $msg){

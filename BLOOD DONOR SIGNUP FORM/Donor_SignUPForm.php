@@ -3,6 +3,7 @@
 require_once '../BLOOD DONOR LOGIN FORM/donordb.php';
 $db=new Donordb();
 $has_error=false;
+$email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 $error="";
 if(isset($_POST['sub']))
 {
@@ -21,6 +22,10 @@ if(isset($_POST['sub']))
   {
     $has_error=true;
     $error="email already exists";
+  }
+  else if(!filter_var($email, FILTER_VALIDATE_EMAIL) || !preg_match($email_pattern, $email)){
+    $has_error=true;
+    $error="Please Check Your Email";
   }
   else if($password!=$confirm_password)
   {
@@ -98,9 +103,16 @@ if(isset($_POST['sub']))
       <div class="formfield">
         
         <form method="post" action="">
+        <?php if($has_error){?>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error!</strong>
+            <?php echo $error; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="text" name="name" style="width: 350px;" class="form-control" id="email" aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>

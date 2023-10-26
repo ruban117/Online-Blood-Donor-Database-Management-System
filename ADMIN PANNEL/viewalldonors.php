@@ -83,7 +83,7 @@
     </div>
     <div class="main_content">
         <div id="View_All_donors" style="display: flex;align-items: center;justify-content: center; height:fit-content; width: 100%;">
-            <iframe src="viewalldonor.html" frameborder="0" style="height: 600px" width="90%"></iframe>
+            <iframe src="viewalldonorfr.php" frameborder="0" style="height: 600px" width="90%"></iframe>
         </div>
     </div>
 </div>

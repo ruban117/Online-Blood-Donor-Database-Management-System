@@ -87,13 +87,13 @@
           <img src="Pictures/blood-2667009_640.jpg" alt="" class="Dashboard">
         </div>
         <div class="informations">
-            <div class="total">Donors Counts
+            <div class="total">Donors Count
               <p>50</p>
             </div>
-            <div class="total">Donors Counts
+            <div class="total">Members Count
             <p>50</p>
             </div>
-            <div class="total">Donors Counts
+            <div class="total">Reports Count
             <p>50</p>
             </div>
         </div>
