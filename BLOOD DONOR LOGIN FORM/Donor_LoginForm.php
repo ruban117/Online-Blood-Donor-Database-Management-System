@@ -1,4 +1,21 @@
+<?php
+require_once "donordb.php";
+$db=new Donordb();
+if(isset($_POST['sub']))
+{
+  $email=$_POST['email'];
+  $password=$_POST['pass'];
 
+  if($db->Login($email,$password)==1)
+  {
+    session_start();
+    $_SESSION['loggedin']=true;
+    $_SESSION['username']=$email;
+    header("Location: ../Blood_Donor/blood_donor.php");
+
+  }
+}
+?>
 
 <!doctype html>
 <html lang="en">

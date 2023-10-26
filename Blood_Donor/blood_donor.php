@@ -1,3 +1,16 @@
+<?php
+session_start();
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+$db=new Donordb();
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+{
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
+    exit; 
+}
+$data=$db->Get_data($_SESSION['username']);
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -43,7 +56,7 @@
         </ul> 
     </div>
     <div class="main_content">
-        <div class="header Dashboard">Welcome Blood Donor Name </div>  
+        <div class="header Dashboard">Welcome <?php echo $data ['name'];?> </div>  
         <div class="info Dashboard">
           <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
         </div>

@@ -64,6 +64,24 @@ class Donordb{
         return rand(100000,999999);
     }
 
+    public function Login($email,$password)
+    {
+        $sql="SELECT COUNT(*) FROM donor WHERE email = :email AND password = :password";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email' => $email, 'password' => $password]);
+        $no_of_users=$stmt->fetchColumn();
+        return $no_of_users;
+    }
+
+    public function Get_data($email)
+    {
+        $sql="SELECT * FROM donor WHERE email = :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $result=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
 
 ?>
