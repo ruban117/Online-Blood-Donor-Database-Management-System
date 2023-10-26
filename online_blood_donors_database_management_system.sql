@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2023 at 05:05 PM
+-- Generation Time: Oct 26, 2023 at 09:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -65,10 +65,17 @@ CREATE TABLE `donor` (
   `state` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `picture` varchar(255) NOT NULL,
   `availability` varchar(1) DEFAULT '1',
-  `age` int(3) NOT NULL
+  `age` int(3) NOT NULL,
+  `picture` varchar(255) DEFAULT '../images/Default.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `donor`
+--
+
+INSERT INTO `donor` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blood_group`, `state`, `city`, `password`, `availability`, `age`, `picture`) VALUES
+(1, 'Souvik Banerjee', 'souvikbanerjee241@gmail.com', '7439497726', '294/5, sarat sarani balir more, hooghly.', '712103', 'A+', 'West Bengal', 'Chinsurah', 'Souvik@123', '1', 18, '../images/Default.png');
 
 --
 -- Indexes for dumped tables
@@ -102,7 +109,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `donor`
 --
 ALTER TABLE `donor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

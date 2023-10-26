@@ -38,7 +38,32 @@ if(isset($_POST['sub']))
     $otp=$db->generateOTP();
     session_start();
     $_SESSION['loggedin']=true;
-    $_SESSION['otp'];
+    $_SESSION['name']=$name;
+    $_SESSION['email']=$email;
+    $_SESSION['phone']=$phone;
+    $_SESSION['address']=$address;
+    $_SESSION['pin']=$pin;
+    $_SESSION['blood_group']=$blood_group;
+    $_SESSION['state']=$state;
+    $_SESSION['city']=$city;
+    $_SESSION['password']=$password;
+    $_SESSION['age']=$age;
+    
+    
+    $_SESSION['otp']=$otp;
+    $html='<p>Dear Blood Donor</p><br>
+               <p>Your One Time Password (OTP) for creating account: <b>'.$otp.'</b></p><br>
+               <p>Please note that the OTP is valid for only one session. If you try to refresh the page or <p>leave the OBDDMS portal, you will be required to regenerate a new OTP.</p><br>
+               <p>If you did not request this OTP, please connect with us immediately at obddms@gmail.com.</p><br><br>
+               <p>Regards,</p><br>
+               <p>Social Service Group</p><br>
+               <p>Online Blood Donors Database Management System</p><br>
+               <p>obddms@gmail.com</p><br>';
+
+    $db->smtp_mailer($email,'OBDDMS:Email Id Verification ', $html);
+    header("Location: ../BLOOD DONOR LOGIN FORM/otp.php");
+
+
 
   }
   
@@ -152,10 +177,7 @@ if(isset($_POST['sub']))
             <label for="cpassword" class="form-label">Confirm Password</label>
             <input type="password" name="cpass" class="form-control" id="pass">
           </div>
-          <div class="mb-3">
-            <label for="picture">Upload Your Picture</label>
-            <input type="file" class="form-control-file" name="picture" id="exampleFormControlFile1">
-          </div>
+          
           <div class="mb-3">
             <label for="age" class="form-label">age</label>
             <input type="number" name="age" class="form-control" id="pass">
