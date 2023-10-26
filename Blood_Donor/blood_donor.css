@@ -302,12 +302,12 @@ ul {
   gap: 50px;
 }
 
-.profile-pic {
+.profile-pic img{
   height: 100px;
   width: 100px;
   border: 2px solid black;
   border-radius: 50%;
-  background-size: cover;
+ 
 }
 
 .Text {
