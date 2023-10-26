@@ -15,10 +15,10 @@ class Donordb{
             
         }
     }
-    public function signup($name,$email,$phone,$address,$pincode,$bgroup,$state,$city,$pass,$imagepath,$age){
-        $sql="INSERT INTO donor (name,email,phone,address,pincode,blood_group,state,city,password,picture,age) VALUES (:name,:email,:phone,:address,:pincode,:bgroup,:state,:city,:pass,:imagepath,:age)";
+    public function signup($name,$email,$phone,$address,$pincode,$bgroup,$state,$city,$pass,$age){
+        $sql="INSERT INTO donor (name,email,phone,address,pincode,blood_group,state,city,password,age) VALUES (:name,:email,:phone,:address,:pincode,:bgroup,:state,:city,:pass,:age)";
         $stmt=$this->conn->prepare($sql);
-        $stmt->execute(['name' => $name,'email' => $email,'phone' => $phone,'address' => $address,'pincode' => $pincode,'bgroup' => $bgroup,'state' => $state,'city' => $city,'pass' => $pass,'imagepath' => $imagepath,'age' =>$age]);
+        $stmt->execute(['name' => $name,'email' => $email,'phone' => $phone,'address' => $address,'pincode' => $pincode,'bgroup' => $bgroup,'state' => $state,'city' => $city,'pass' => $pass,'age' =>$age]);
 
         return true;
     }
