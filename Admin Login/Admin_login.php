@@ -2,6 +2,7 @@
   require_once  'Admindb.php';
   $has_errors=false;
   $err='';
+  $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
   $db=new AdminDb();
   if(isset($_POST['sub'])){
     $email=$_POST['email'];
@@ -41,7 +42,12 @@
 
       $db->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
       header("Location: ../OTPAREA/otp.php");
-    }else{
+    }
+    else if(!filter_var($nemail, FILTER_VALIDATE_EMAIL) || !preg_match($email_pattern, $nemail)){
+      $has_errors=true;
+      $err="Please Check Your Email";
+    }
+    else{
       $has_errors=true;
       $err='Invalid Email/Password';
     }

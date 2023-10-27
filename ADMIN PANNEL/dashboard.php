@@ -88,7 +88,7 @@
         </div>
         <div class="informations">
             <div class="total">Donors Count
-              <p>50</p>
+              <p><?php echo $db->TotalDonor();?></p>
             </div>
             <div class="total">Members Count
             <p>50</p>

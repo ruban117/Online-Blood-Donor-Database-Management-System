@@ -104,8 +104,17 @@
                 $data[]=$row;
             }
             return $data;
-         }
+        }
+
+        public function TotalDonor() {
+            $sql = "SELECT COUNT(*) FROM donor"; // Remove the single quotes
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(); // Use an associative array to bind the parameter
+            $no_of_users = $stmt->fetchColumn(); // Use fetchColumn() to get the count
+            return $no_of_users;
+        }
         
+
 
         public function smtp_mailer($to,$subject, $msg){
             $mail = new PHPMailer(); 

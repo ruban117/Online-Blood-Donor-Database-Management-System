@@ -49,7 +49,7 @@ $data=$db->Get_data($_SESSION['username']);
         <ul>
             <li id="li1"><a href="blood_donor.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
             <li id="li2"><a href="donor_availability.php" id="A"><i class="fas fa-home"></i>Availaibility Status</a></li>
-            <li id="li3"><a href="donor_profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
+            <li id="li3" style="background-color: #594f8d;"><a href="donor_profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
             <li id="li4"><a href="donor_editprofile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
             <li id="li5"><a href="donor_changepassword.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
             <li><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></li>
@@ -57,13 +57,13 @@ $data=$db->Get_data($_SESSION['username']);
     </div>
     <div class="main_content">
         <div id="Profile">
-            <div class="profile-pic" ><img src="<?php echo $data['picture'] ?>" alt=""></div>
-            <div class="Text"><?php echo $data['name'] ?></div>
-            <div class="Text" ><?php echo $data['email'] ?></div>
-            <div class="Text" ><?php echo $data['phone'] ?></div>
-            <div class="Text" ><?php echo $data['address'] ?></div>
-            <div class="Text" ><?php echo $data['state'] ?></div>
-            <div class="Text" ><?php echo $data['city'] ?></div>
+            <div class="profile-pic" ><img src="<?php echo $data['picture']; ?>" alt=""></div>
+            <div class="Text"><?php echo $data['name']; ?></div>
+            <div class="Text" ><?php echo $data['email']; ?></div>
+            <div class="Text" ><?php echo $data['phone']; ?></div>
+            <div class="Text" ><?php echo $data['address']; ?></div>
+            <div class="Text" ><?php echo $data['state']; ?></div>
+            <div class="Text" ><?php echo $data['city']; ?></div>
         </div>
     </div>
             

@@ -1,6 +1,9 @@
 <?php
 require_once "donordb.php";
+$has_errors=false;
+$err='';
 $db=new Donordb();
+$email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 if(isset($_POST['sub']))
 {
   $email=$_POST['email'];
@@ -14,6 +17,43 @@ if(isset($_POST['sub']))
     header("Location: ../Blood_Donor/blood_donor.php");
 
   }
+  else{
+    $has_errors=true;
+    $err='Invalid Login Creadentials';
+  }
+}
+  if(isset($_POST['fsub'])){
+    $nemail=$_POST['nemail'];
+    $npass=$_POST['npass'];
+    $nconfpass=$_POST['nconfpass'];
+
+    if($db->exists($nemail)==1 && $npass==$nconfpass){
+      session_start();
+      $_SESSION['mail']=$nemail;
+      $_SESSION['npass']=$npass;
+      $_SESSION['otp']=true;
+      $otp=$db->generateOTP();
+      $_SESSION['numotp']=$otp;
+      $html='<p>Dear User</p><br>
+               <p>Your One Time Password (OTP) for changing password: <b>'.$otp.'</b></p><br>
+               <p>Please note that the OTP is valid for only one session. If you try to refresh the page or <p>leave the OBDDMS portal, you will be required to regenerate a new OTP.</p><br>
+               <p>If you did not request this OTP, please connect with us immediately at obddms2023@gmail.com.</p><br><br>
+               <p>Regards,</p><br>
+               <p>Social Service Group</p><br>
+               <p>Online Blood Donors Database Management System</p><br>
+               <p>obddms2023@gmail.com</p><br>';
+
+      $db->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
+      header("Location: forgetotp.php");
+    }
+    else if(!filter_var($nemail, FILTER_VALIDATE_EMAIL) || !preg_match($email_pattern, $nemail)){
+      $has_errors=true;
+      $err="Please Check Your Email";
+    }
+    else{
+      $has_errors=true;
+      $err='Invalid Email/Password';
+    }
 }
 ?>
 
@@ -44,6 +84,13 @@ if(isset($_POST['sub']))
       <h1 class="stylish-underline">Log in</h1>
       <div class="formfield">
         <form action="" method="post">
+        <?php if($has_errors){?>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error!</strong>
+            <?php echo $err; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -69,20 +116,26 @@ if(isset($_POST['sub']))
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form method="post" action="">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" name="nemail" class="form-control" id="nemail" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Change Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="exampleInputPassword1" class="form-label">New Pasword</label>
+              <input type="password" name="npass" class="form-control" id="npass">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+              <input type="password" name="nconfpass" class="form-control" id="nconfpass">
+            </div>
+            <div class="form-group">
+              <button type="submit" name="fsub" id="fsub" class="btn btn-danger btn-block">Forget Password</button>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

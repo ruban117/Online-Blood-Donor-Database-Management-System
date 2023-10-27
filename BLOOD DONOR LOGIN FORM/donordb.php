@@ -82,6 +82,13 @@ class Donordb{
         return $result;
     }
 
+    public function ForgetPassword($email,$pass){
+        $sql2="UPDATE donor SET password = :pass WHERE email= :email";
+        $stmt2=$this->conn->prepare($sql2);
+        $res=$stmt2->execute(["email"=>$email,"pass"=>$pass]);
+        return true;
+    }
+
 }
 
 ?>
