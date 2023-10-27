@@ -112,27 +112,27 @@ if(isset($_POST['sub']))
           <?php }?>
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" name="name" style="width: 350px;" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="text" name="name" style="width: 350px;" class="form-control" id="email" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
-            <input type="number" name="phone" class="form-control" id="pass">
+            <input type="number" name="phone" class="form-control" id="pass" required>
           </div>
           <div class="mb-3">
             <label for="address">Address</label>
-            <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="3" required></textarea>
           </div>
           <div class="mb-3">
             <label for="pin_code" class="form-label">Pin Code</label>
-            <input type="number" name="pin" class="form-control" id="pass">
+            <input type="number" name="pin" class="form-control" id="pass" required>
           </div>
           <div class="mb-3">
             <label for="blood_group">Blood Group</label>
-            <select id="inputState" name="bgroup" class="form-control">
+            <select id="inputState" name="bgroup" class="form-control" required>
               <option selected>Choose...</option>
               <option>A+</option>
               <option>A-</option>
@@ -146,7 +146,7 @@ if(isset($_POST['sub']))
           </div>
           <div class="mb-3">
             <label for="state">State</label>
-            <select id="inputState" name="state" class="form-control">
+            <select id="inputState" name="state" class="form-control" required>
               <option selected>Choose...</option>
               <option>Andhra Pradesh</option>
               <option>Arunachal Pradesh</option>
@@ -179,20 +179,20 @@ if(isset($_POST['sub']))
           </div>
           <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <input type="text" name="city" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="text" name="city" class="form-control" id="email" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" name="pass" class="form-control" id="pass">
+            <input type="password" name="pass" class="form-control" id="pass" required>
           </div>
           <div class="mb-3">
             <label for="cpassword" class="form-label">Confirm Password</label>
-            <input type="password" name="cpass" class="form-control" id="pass">
+            <input type="password" name="cpass" class="form-control" id="pass" required>
           </div>
           
           <div class="mb-3">
-            <label for="age" class="form-label">age</label>
-            <input type="number" name="age" class="form-control" id="pass">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" name="age" class="form-control" id="pass" required>
           </div>
           <button type="submit" class="btn btn-primary" name="sub">Submit</button>
         </form>

@@ -52,7 +52,7 @@ $data=$db->Get_data($_SESSION['username']);
             <li id="li3" style="background-color: #594f8d;"><a href="donor_profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
             <li id="li4"><a href="donor_editprofile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
             <li id="li5"><a href="donor_changepassword.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
-            <li><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></li>
+            <li><a href="logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
         </ul> 
     </div>
     <div class="main_content">
