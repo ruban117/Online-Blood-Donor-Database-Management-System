@@ -37,8 +37,8 @@
         <div class="sidebar">
             <h2>BLOOD REQUESTERS</h2>
             <ul>
-                <li id="li1" style="background-color: #594f8d;"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
-                <li id="li2"><a href="search_donors.php" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>
+                <li id="li1"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li id="li2" style="background-color: #594f8d;"><a href="search_donors.php" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>
                 <li id="li3"><a href="profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
                 <li id="li4"><a href="edit_profile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
                 <li id="li5"><a href="change_password.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
@@ -47,28 +47,33 @@
             </ul>
         </div>
         <div class="main_content">
-            <div class="header Dashboard">Welcome Blood Donor Name </div>
-            <div class="info Dashboard">
-                <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
-            </div>
-            <div id="Change_Password" style="display: none;align-items: center;justify-content: center;">
-                <div class="container">
+            <div id="Availibility" style="display: flex;align-items: center;justify-content: center;">
+                <div class="instructions">
                     <form method="post">
-                        <div class="form-group custom-form">
-                            <label for="exampleInputEmail1">Enter Previous Password</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" name="PP">
-                        </div>
-                        <div class="form-group custom-form">
-                            <label for="exampleInputPassword1">Enter New Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="NP">
-                        </div>
-                        <div class="form-group custom-form">
-                            <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="CP">
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="CSB">Set Password</button>
+                            <div class="form-group col-md-4">
+                                <label for="inputState">Blood Group</label>
+                                <select id="inputState" class="form-control" name="CS">
+                                    <option selected>Choose...</option>
+                                    <option>A+</option>
+                                    <option>A-</option>
+                                    <option>B+</option>
+                                    <option>B-</option>
+                                    <option>AB+</option>
+                                    <option>AB-</option>
+                                    <option>O+</option>
+                                    <option>O-</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputZip">Pin Code</label>
+                                <input type="text" class="form-control" id="inputZip" name="CPI">
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="sub" >Search Here</button>        
                     </form>
+                </div>
+                <h1 class="search_heading">Search Results</h1>
+                <div class="availability">
+                <iframe src="searchresults.html" frameborder="0" style="height: 600px" width="90%"></iframe>
                 </div>
             </div>
         </div>

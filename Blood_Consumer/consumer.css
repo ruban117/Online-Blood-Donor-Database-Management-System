@@ -33,7 +33,7 @@ ul {
   border-bottom: 1px solid #bdb8d7;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 #Availibility {
@@ -307,7 +307,7 @@ ul {
 
 
 .main_content #Profile {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;

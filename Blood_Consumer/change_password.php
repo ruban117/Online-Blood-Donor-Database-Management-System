@@ -37,21 +37,17 @@
         <div class="sidebar">
             <h2>BLOOD REQUESTERS</h2>
             <ul>
-                <li id="li1" style="background-color: #594f8d;"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li id="li1"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
                 <li id="li2"><a href="search_donors.php" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>
                 <li id="li3"><a href="profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
                 <li id="li4"><a href="edit_profile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
-                <li id="li5"><a href="change_password.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
+                <li id="li5" style="background-color: #594f8d;"><a href="change_password.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
                 <li id="li6"><a href="viewcontacteddonors.php" id="CP"><i class="fa-solid fa-file-invoice"></i>View Contact History</a></li>
                 <li><a href="logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
             </ul>
         </div>
         <div class="main_content">
-            <div class="header Dashboard">Welcome Blood Donor Name </div>
-            <div class="info Dashboard">
-                <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
-            </div>
-            <div id="Change_Password" style="display: none;align-items: center;justify-content: center;">
+            <div id="Change_Password" style="display: flex;align-items: center;justify-content: center;">
                 <div class="container">
                     <form method="post">
                         <div class="form-group custom-form">

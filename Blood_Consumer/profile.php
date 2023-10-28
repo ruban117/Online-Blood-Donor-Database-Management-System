@@ -37,9 +37,9 @@
         <div class="sidebar">
             <h2>BLOOD REQUESTERS</h2>
             <ul>
-                <li id="li1" style="background-color: #594f8d;"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li id="li1"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
                 <li id="li2"><a href="search_donors.php" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>
-                <li id="li3"><a href="profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
+                <li id="li3" style="background-color: #594f8d;"><a href="profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
                 <li id="li4"><a href="edit_profile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
                 <li id="li5"><a href="change_password.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
                 <li id="li6"><a href="viewcontacteddonors.php" id="CP"><i class="fa-solid fa-file-invoice"></i>View Contact History</a></li>
@@ -47,29 +47,14 @@
             </ul>
         </div>
         <div class="main_content">
-            <div class="header Dashboard">Welcome Blood Donor Name </div>
-            <div class="info Dashboard">
-                <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
-            </div>
-            <div id="Change_Password" style="display: none;align-items: center;justify-content: center;">
-                <div class="container">
-                    <form method="post">
-                        <div class="form-group custom-form">
-                            <label for="exampleInputEmail1">Enter Previous Password</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" name="PP">
-                        </div>
-                        <div class="form-group custom-form">
-                            <label for="exampleInputPassword1">Enter New Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="NP">
-                        </div>
-                        <div class="form-group custom-form">
-                            <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="CP">
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="CSB">Set Password</button>
-                    </form>
-                </div>
+            <div id="Profile">
+                <div class="profile-pic"></div>
+                <div class="Text">John Doe</div>
+                <div class="Text">johndoe@gmail.com</div>
+                <div class="Text">6289814242</div>
+                <div class="Text">28, South Baishnav Para Road Post Garifa Dist 24 PGS North</div>
+                <div class="Text">West Bengal</div>
+                <div class="Text">Naihati</div>
             </div>
         </div>
     </div>
