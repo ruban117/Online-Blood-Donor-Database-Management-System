@@ -1,6 +1,6 @@
 <?php
 include('../smtp/PHPMailerAutoload.php');
-class Donordb{
+class Consumerdb{
     private $dsn="mysql:host=localhost; dbname=online_blood_donors_database_management_system";
     private $user="root";
     private $pass="";
@@ -15,8 +15,9 @@ class Donordb{
             
         }
     }
+
     public function signup($name,$email,$phone,$address,$pincode,$bgroup,$state,$city,$pass,$age){
-        $sql="INSERT INTO donor (name,email,phone,address,pincode,blood_group,state,city,password,age) VALUES (:name,:email,:phone,:address,:pincode,:bgroup,:state,:city,:pass,:age)";
+        $sql="INSERT INTO member (name,email,phone,address,pincode,blood_group,state,city,password,age) VALUES (:name,:email,:phone,:address,:pincode,:bgroup,:state,:city,:pass,:age)";
         $stmt=$this->conn->prepare($sql);
         $stmt->execute(['name' => $name,'email' => $email,'phone' => $phone,'address' => $address,'pincode' => $pincode,'bgroup' => $bgroup,'state' => $state,'city' => $city,'pass' => $pass,'age' =>$age]);
 
@@ -25,7 +26,7 @@ class Donordb{
 
     public function exists($email)
     {
-        $sql="SELECT COUNT(*) FROM donor WHERE email=:email";
+        $sql="SELECT COUNT(*) FROM member WHERE email=:email";
         $stmt=$this->conn->prepare($sql);
         $stmt->execute(['email'=>$email]);
         $no_of_users=$stmt->fetchColumn();
@@ -66,68 +67,17 @@ class Donordb{
 
     public function Login($email,$password)
     {
-        $sql="SELECT COUNT(*) FROM donor WHERE email = :email AND password = :password";
+        $sql="SELECT COUNT(*) FROM member WHERE email = :email AND password = :password";
         $stmt=$this->conn->prepare($sql);
         $stmt->execute(['email' => $email, 'password' => $password]);
         $no_of_users=$stmt->fetchColumn();
         return $no_of_users;
     }
 
-    public function Get_data($email)
-    {
-        $sql="SELECT * FROM donor WHERE email = :email";
-        $stmt=$this->conn->prepare($sql);
-        $stmt->execute(['email' => $email]);
-        $result=$stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
     public function ForgetPassword($email,$pass){
-        $sql2="UPDATE donor SET password = :pass WHERE email= :email";
+        $sql2="UPDATE member SET password = :pass WHERE email= :email";
         $stmt2=$this->conn->prepare($sql2);
         $res=$stmt2->execute(["pass"=>$pass,"email"=>$email]);
         return true;
     }
-
-    public function update_user($name,$email,$phone,$address,$pincode,$bloodgroup,$state,$city,$age)
-    {
-        $sql="UPDATE donor SET name= :name, phone= :phone, address= :address, pincode= :pincode, blood_group= :bloodgroup, state= :state, city= :city, age= :age WHERE email= :email";
-
-        $stmt=$this->conn->prepare($sql);
-
-        $stmt->execute(['name'=>$name,'email'=>$email,'phone'=>$phone,'address'=>$address,'pincode'=>$pincode,'bloodgroup'=>$bloodgroup,'state'=>$state,'city'=>$city,'age'=>$age]);
-
-    }
-
-    public function update_image($email,$imagepath)
-    {
-        $sql="UPDATE donor SET picture= :imagepath WHERE email= :email";
-        $stmt=$this->conn->prepare($sql);
-
-        $stmt->execute(['imagepath'=>$imagepath,'email'=>$email]);
-
-    }
-    public function update_password($email,$password)
-    {
-        $sql="UPDATE donor SET password= :password WHERE email= :email";
-        $stmt=$this->conn->prepare($sql);
-        $stmt->execute(['password'=>$password,'email'=>$email]);
-        
-
-    }
-
-    public function Change_Availiability($email){
-        $sql="UPDATE donor SET availability= 0 WHERE email= :email";
-        $stmt=$this->conn->prepare($sql);
-        $stmt->execute(['email'=>$email]);
-    }
-
-    public function Change_Availiability_To_One($email){
-        $sql="UPDATE donor SET availability= 1 WHERE email= :email";
-        $stmt=$this->conn->prepare($sql);
-        $stmt->execute(['email'=>$email]);
-    }
-
 }
-
-?>
