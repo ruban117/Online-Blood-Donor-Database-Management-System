@@ -82,11 +82,31 @@ class Donordb{
         return $result;
     }
 
-    public function ForgetPassword($email,$pass){
-        $sql2="UPDATE donor SET password = :pass WHERE email= :email";
-        $stmt2=$this->conn->prepare($sql2);
-        $res=$stmt2->execute(["email"=>$email,"pass"=>$pass]);
-        return true;
+    public function update_user($name,$email,$phone,$address,$pincode,$bloodgroup,$state,$city,$age)
+    {
+        $sql="UPDATE donor SET name= :name, phone= :phone, address= :address, pincode= :pincode, blood_group= :bloodgroup, state= :state, city= :city, age= :age WHERE email= :email";
+
+        $stmt=$this->conn->prepare($sql);
+
+        $stmt->execute(['name'=>$name,'email'=>$email,'phone'=>$phone,'address'=>$address,'pincode'=>$pincode,'bloodgroup'=>$bloodgroup,'state'=>$state,'city'=>$city,'age'=>$age]);
+
+    }
+
+    public function update_image($email,$imagepath)
+    {
+        $sql="UPDATE donor SET picture= :imagepath WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+
+        $stmt->execute(['imagepath'=>$imagepath,'email'=>$email]);
+
+    }
+    public function update_password($email,$password)
+    {
+        $sql="UPDATE donor SET password= :password WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['password'=>$password,'email'=>$email]);
+        
+
     }
 
 }
