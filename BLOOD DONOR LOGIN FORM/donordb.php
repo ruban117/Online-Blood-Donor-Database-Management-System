@@ -109,6 +109,18 @@ class Donordb{
 
     }
 
+    public function Change_Availiability($email){
+        $sql="UPDATE donor SET availability= 0 WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+    }
+
+    public function Change_Availiability_To_One($email){
+        $sql="UPDATE donor SET availability= 1 WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+    }
+
 }
 
 ?>

@@ -1,3 +1,27 @@
+<?php
+session_start();
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+$db=new Donordb();
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+{
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
+    exit; 
+}
+$data=$db->Get_data($_SESSION['username']);
+if(isset($_POST['yes'])){
+    $db->Change_Availiability($_SESSION['username']);
+    header("location: donor_availability.php");
+}
+
+if(isset($_POST['no'])){
+    $db->Change_Availiability_To_One($_SESSION['username']);
+    header("location: donor_availability.php");
+}
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -30,6 +54,47 @@
 <?php
     include "Assests/_navbar2.php";
 ?>
+<!--------------------------------------------Confirm Box Hide Profile---------------------------------------->
+<div class="modal fade" id="confModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Do You really Want To Hide Your Profie?</h4>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body px-4">
+                <form action="" method="post" id="form-data">
+                    <div class="form-group">
+                        <input type="submit" name="yes" id="yes" value="Yes" class="btn btn-danger">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!--------------------------------------------Confirm Box UnHide Profile---------------------------------------->
+  <div class="modal fade" id="confModal2">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Do You really Want To Unhide Your Profie?</h4>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body px-4">
+                <form action="" method="post" id="form-data">
+                    <div class="form-group">
+                        <input type="submit" name="no" id="yes" value="Yes" class="btn btn-danger">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="wrapper">
     <div class="sidebar">
         <h2>Donor</h2>
@@ -39,6 +104,7 @@
             <li id="li3"><a href="donor_profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
             <li id="li4"><a href="donor_editprofile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
             <li id="li5"><a href="donor_changepassword.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
+            <li id="li6"><a href="Contact_History.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Contact History</a></li>
             <li><a href="logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
         </ul> 
     </div>
@@ -60,10 +126,15 @@
                 </ul>
             </div>
             <div class="availability">
-                <p>Note:- If you click on the yes button your profile will be hided from all consumers</p>
+                <p>Note:- If you click on the Hide Profile button your profile will be hided from all Members</p>
+                <?php if($data['availability']==1){?>
+                <p style="color: blue; font-weight: bold;">Your Profile Is Visible To All Donors</p>
+                <?php }else{?>
+                <p>Your Profile Is Not Visible To All Donors</p>
+                <?php }?>
                 <div class="buttons">
-                <button type="submit" class="btn btn-danger">YES</button>
-                <button type="submit" class="btn btn-danger">NO</button>
+                <button type="button" class="btn hide btn-danger">Hide Profile</button>
+                <button type="button" class="btn sh btn-danger">Show Profile</button>
                 </div>
             </div>
         </div>
@@ -72,11 +143,23 @@
 <?php
     include "Assests/_footer.php";
 ?>
-<script  src="https://code.jquery.com/jquery-3.7.0.js"></script>
-  <script  src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script  src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <script src="donorscript.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
+<script>
+    let a = document.querySelector('.hide');
+let b = document.querySelector('.sh');
+
+a.addEventListener('click', (e) => {
+    $('#confModal').modal('toggle');
+});
+
+b.addEventListener('click', (e) => {
+    $('#confModal2').modal('toggle');
+});
+</script>
 
 </body>
 
