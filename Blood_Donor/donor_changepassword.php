@@ -1,3 +1,39 @@
+<?php
+session_start();
+$has_error=false;
+$error="";
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+$db=new Donordb();
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+{
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
+    exit; 
+}
+$data=$db->Get_data($_SESSION['username']);
+
+if(isset($_POST['set_password']))
+{
+  $old=$_POST['old_password'];
+  $new=$_POST['new_password'];
+  $confirm= $_POST['c_password'];
+
+  if($data['password']!=$old)
+  {
+    $has_error=true;
+    $error="previous password did not matched";
+  }
+  else if($new!=$confirm)
+  {
+    $has_error=true;
+    $error="password did not matched";
+  }
+  else
+  {
+    $db->update_password($_SESSION['username'],$new);
+  }
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -45,20 +81,20 @@
     <div class="main_content">
         <div id="Change_Password" style="display: flex;align-items: center;justify-content: center;">
             <div class="container">
-                <form>
+                <form method="post" action="">
                     <div class="form-group custom-form">
                       <label for="exampleInputEmail1">Enter Previous Password</label>
-                      <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="old_password">
                     </div>
                     <div class="form-group custom-form">
                       <label for="exampleInputPassword1">Enter New Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                      <input type="password" class="form-control" id="exampleInputPassword1" name="new_password">
                     </div>
                     <div class="form-group custom-form">
                         <label for="exampleInputPassword1">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="c_password">
                       </div>
-                    <button type="submit" class="btn btn-primary">Set Password</button>
+                    <button type="submit" class="btn btn-primary" name="set_password">Set Password</button>
                   </form>
             </div>
         </div>
