@@ -105,6 +105,13 @@ if(isset($_POST['save_change']))
             <div id="Edit_Profile" style="display: flex;align-items: center;justify-content: center;">
                 <div class="container">
                     <form method="post" action="" enctype="multipart/form-data">
+                    <?php if($has_error){?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong>
+                            <?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php }?>
                         <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
                         <input type="text" class="form-control custom-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" name="name" value="<?php echo $data['name'];?>">

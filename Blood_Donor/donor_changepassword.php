@@ -83,6 +83,13 @@ if(isset($_POST['set_password']))
         <div id="Change_Password" style="display: flex;align-items: center;justify-content: center;">
             <div class="container">
                 <form method="post" action="">
+                <?php if($has_error){?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong>
+                            <?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php }?>
                     <div class="form-group custom-form">
                       <label for="exampleInputEmail1">Enter Previous Password</label>
                       <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="old_password">

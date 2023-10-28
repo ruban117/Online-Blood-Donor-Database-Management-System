@@ -1,3 +1,17 @@
+<?php
+session_start();
+$has_error=false;
+$error="";
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+$db=new Donordb();
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+{
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
+    exit; 
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 
