@@ -4,7 +4,7 @@ require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 $db=new Donordb();
 if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
 {
-    header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
     exit; 
 }
 $data=$db->Get_data($_SESSION['username']);
