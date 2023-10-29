@@ -1,7 +1,9 @@
 <?php
 
 require_once '../Blood_Consumer_login_form/ConsumerDb.php';
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 $db=new Consumerdb();
+$db2=new DonorDb();
 $has_error=false;
 $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 $error="";
@@ -65,7 +67,7 @@ if(isset($_POST['sub']))
                <p>Online Blood Donors Database Management System</p><br>
                <p>obddms@gmail.com</p><br>';
 
-    $db->smtp_mailer($email,'OBDDMS:Email Id Verification ', $html);
+    $db2->smtp_mailer($email,'OBDDMS:Email Id Verification ', $html);
     header("Location: ../Blood_Consumer_login_form/otp.php");
 
 

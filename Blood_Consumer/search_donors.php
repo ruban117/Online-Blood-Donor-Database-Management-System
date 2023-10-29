@@ -1,3 +1,20 @@
+<?php
+session_start();
+require_once "../Blood_Consumer_login_form/ConsumerDb.php";
+$db=new Consumerdb();
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+{
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
+    exit; 
+}
+if(isset($_POST['sub'])){
+    $blood=$_POST['bgroup'];
+    $pin=$_POST['pin'];
+    $_SESSION['blood']=$blood;
+    $_SESSION['pin']=$pin;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -52,7 +69,7 @@
                     <form method="post">
                             <div class="form-group col-md-4">
                                 <label for="inputState">Blood Group</label>
-                                <select id="inputState" class="form-control" name="CS">
+                                <select id="inputState" class="form-control" name="bgroup">
                                     <option selected>Choose...</option>
                                     <option>A+</option>
                                     <option>A-</option>
@@ -66,14 +83,14 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputZip">Pin Code</label>
-                                <input type="text" class="form-control" id="inputZip" name="CPI">
+                                <input type="text" class="form-control" id="inputZip" name="pin">
                             </div>
-                            <button type="submit" class="btn btn-primary" id="sub" >Search Here</button>        
+                            <button type="submit" name="sub" class="btn btn-primary" id="sub" >Search Here</button>        
                     </form>
                 </div>
                 <h1 class="search_heading">Search Results</h1>
                 <div class="availability">
-                <iframe src="searchresults.html" frameborder="0" style="height: 600px" width="90%"></iframe>
+                <iframe src="searchresults.php" frameborder="0" style="height: 600px" width="90%"></iframe>
                 </div>
             </div>
         </div>

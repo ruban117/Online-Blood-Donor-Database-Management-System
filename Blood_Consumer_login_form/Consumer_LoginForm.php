@@ -1,8 +1,10 @@
 <?php
 require_once "ConsumerDb.php";
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 $has_errors=false;
 $err='';
 $db=new Consumerdb();
+$db2=new DonorDb();
 $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 if(isset($_POST['sub']))
 {
@@ -43,7 +45,7 @@ if(isset($_POST['sub']))
                <p>Online Blood Donors Database Management System</p><br>
                <p>obddms2023@gmail.com</p><br>';
 
-      $db->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
+      $db2->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
       header("Location: forgetotp.php");
     }
     else if(!filter_var($nemail, FILTER_VALIDATE_EMAIL) || !preg_match($email_pattern, $nemail)){
