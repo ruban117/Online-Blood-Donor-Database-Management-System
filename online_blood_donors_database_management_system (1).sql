@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2023 at 06:26 AM
+-- Generation Time: Oct 29, 2023 at 07:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -104,7 +104,27 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blood_group`, `state`, `city`, `password`, `picture`, `age`) VALUES
-(1, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, Dakhin Baishnab Para Road,Naihati', '743166', 'B+', 'West Bengal', 'Naihati', 'aruda4344', '../images/R.png', 20);
+(1, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, Dakhin Baishnab Para Road,Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '1234', '../images/R.png', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `rid` int(11) NOT NULL,
+  `reporter` varchar(50) NOT NULL,
+  `reportie` varchar(50) NOT NULL,
+  `content` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`rid`, `reporter`, `reportie`, `content`) VALUES
+(1, 'rubanpathak706@gmail.com', 'rubanpathak706@gmail.com', 'Spam User');
 
 --
 -- Indexes for dumped tables
@@ -131,6 +151,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`rid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -151,6 +177,12 @@ ALTER TABLE `donor`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
