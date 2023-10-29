@@ -1,4 +1,8 @@
-
+<?php
+  require_once '../Admin Login/Admindb.php';
+  $db=new AdminDb();
+  $data=$db->ReadMembers();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -17,27 +21,31 @@
 
 <body>
     <table id="myTable" class="table table-striped">
-        <thead class="thead-dark">
+    <thead class="thead-dark">
           <tr>
+            <th scope="col" style="color: black;">SL NO</th>
             <th scope="col" style="color: black;">Profile Picture</th>
-            <th scope="col" style="color: black;">Requester's Name</th>
-            <th scope="col" style="color: black;">Requester's Email</th>
-            <th scope="col" style="color: black;">Requester's Phone</th>
-            <th scope="col" style="color: black;">Requester's Blood Group</th>
+            <th scope="col" style="color: black;">Requesters Name</th>
+            <th scope="col" style="color: black;">Requesters Email</th>
+            <th scope="col" style="color: black;">Requesters Phone</th>
+            <th scope="col" style="color: black;">Requesters Blood Group</th>
           </tr>
         </thead>
         <tbody>
+        <?php $i=1; foreach($data as $row){?>
           <tr>
-            <th scope="row">
+            <td><?php echo $i ?></th>
+            <td scope="row">
                 <div class="propic">
-                  <img src="../images/Default.png" alt="">
+                  <img src="<?php echo $row['picture']?>" alt="">
                 </div>
-            </th>
-            <td>Ruban Pathak</td>
-            <td>rubanpathak706@gmail.com</td>
-            <td>6289814242</td>
-            <td>B+</td>
+            </td>
+            <td><?php echo $row['name'] ;    ?></td>
+            <td><?php echo $row['email'] ;    ?></td>
+            <td><?php echo $row['phone'] ;    ?></td>
+            <td><?php echo $row['blood_group'] ;    ?></td>
           </tr>
+        <?php $i++; }?>
         </tbody>
       </table>
 <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>

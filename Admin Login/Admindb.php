@@ -106,8 +106,28 @@
             return $data;
         }
 
+        public function ReadMembers(){
+            $data=array();
+            $sql="SELECT * FROM member";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[]=$row;
+            }
+            return $data;
+        }
+
         public function TotalDonor() {
             $sql = "SELECT COUNT(*) FROM donor"; // Remove the single quotes
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(); // Use an associative array to bind the parameter
+            $no_of_users = $stmt->fetchColumn(); // Use fetchColumn() to get the count
+            return $no_of_users;
+        }
+
+        public function TotalMembers() {
+            $sql = "SELECT COUNT(*) FROM member"; // Remove the single quotes
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(); // Use an associative array to bind the parameter
             $no_of_users = $stmt->fetchColumn(); // Use fetchColumn() to get the count

@@ -91,7 +91,7 @@
               <p><?php echo $db->TotalDonor();?></p>
             </div>
             <div class="total">Members Count
-            <p>50</p>
+            <p><?php echo $db->TotalMembers();?></p>
             </div>
             <div class="total">Reports Count
             <p>50</p>
