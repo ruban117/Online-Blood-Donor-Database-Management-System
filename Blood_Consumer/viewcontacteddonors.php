@@ -4,7 +4,7 @@ require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 $db=new Donordb();
 if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
 {
-    header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
+    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
     exit; 
 }
 $data=$db->Get_data($_SESSION['username']);
@@ -18,7 +18,7 @@ $data=$db->Get_data($_SESSION['username']);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blood Donor</title>
-  <link rel="stylesheet" href="blood_donor.css">
+  <link rel="stylesheet" href="consumer.css">
   <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"-->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   
@@ -47,21 +47,21 @@ $data=$db->Get_data($_SESSION['username']);
     <div class="sidebar">
         <h2>Donor</h2>
         <ul>
-            <li id="li1" style="background-color: #594f8d;"><a href="blood_donor.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
-            <li id="li2"><a href="donor_availability.php" id="A"><i class="fas fa-home"></i>Availaibility Status</a></li>
-            <li id="li3"><a href="donor_profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
-            <li id="li4"><a href="donor_editprofile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
-            <li id="li5"><a href="donor_changepassword.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
-            <li id="li6"><a href="Contact_History.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Contact History</a></li>
-            <li><a href="logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
-        </ul> 
+                <li id="li1"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li id="li2"><a href="search_donors.php" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>
+                <li id="li3"><a href="profile.php" id="P"><i class="fas fa-user"></i>Profile</a></li>
+                <li id="li4"><a href="edit_profile.php" id="EP"><i class="fas fa-address-card"></i>Edit Profile</a></li>
+                <li id="li5"><a href="change_password.php" id="CP"><i class="fa-solid fa-file-invoice"></i>Change Password</a></li>
+                <li id="li6" style="background-color: #594f8d;"><a href="viewcontacteddonors.php" id="CP"><i class="fa-solid fa-file-invoice"></i>View Contact History</a></li>
+                <li><a href="logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
+            </ul> 
     </div>
     <div class="main_content">
-        <div class="header Dashboard">Welcome <?php echo $data ['name'];?> </div>  
-        <div class="info Dashboard">
-          <img src="E4TYBW4W6JCA.jpg" alt="" class="Dashboard">
+        <div id="View_All_donors" style="display: flex;align-items: center;justify-content: center; height:fit-content; width: 100%;">
+            <iframe src="viewcontacteddonorsfr.php" frameborder="0" style="height: 600px" width="90%"></iframe>
         </div>
     </div>
+            
 </div>
 <?php
     include "Assests/_footer.php";

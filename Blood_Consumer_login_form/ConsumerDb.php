@@ -74,10 +74,46 @@ class Consumerdb{
         return $no_of_users;
     }
 
+    public function Get_data($email)
+    {
+        $sql="SELECT * FROM member WHERE email = :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $result=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public function ForgetPassword($email,$pass){
         $sql2="UPDATE member SET password = :pass WHERE email= :email";
         $stmt2=$this->conn->prepare($sql2);
         $res=$stmt2->execute(["pass"=>$pass,"email"=>$email]);
         return true;
+    }
+
+    public function update_user($name,$email,$phone,$address,$pincode,$bloodgroup,$state,$city,$age)
+    {
+        $sql="UPDATE member SET name= :name, phone= :phone, address= :address, pincode= :pincode, blood_group= :bloodgroup, state= :state, city= :city, age= :age WHERE email= :email";
+
+        $stmt=$this->conn->prepare($sql);
+
+        $stmt->execute(['name'=>$name,'email'=>$email,'phone'=>$phone,'address'=>$address,'pincode'=>$pincode,'bloodgroup'=>$bloodgroup,'state'=>$state,'city'=>$city,'age'=>$age]);
+
+    }
+
+    public function update_image($email,$imagepath)
+    {
+        $sql="UPDATE member SET picture= :imagepath WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+
+        $stmt->execute(['imagepath'=>$imagepath,'email'=>$email]);
+
+    }
+    public function update_password($email,$password)
+    {
+        $sql="UPDATE member SET password= :password WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['password'=>$password,'email'=>$email]);
+        
+
     }
 }

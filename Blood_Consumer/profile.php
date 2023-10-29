@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once "../Blood_Consumer_login_form/ConsumerDb.php";
+$db=new Consumerdb();
+if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+{
+    header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
+    exit; 
+}
+$data=$db->Get_data($_SESSION['username']);
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -47,15 +61,15 @@
             </ul>
         </div>
         <div class="main_content">
-            <div id="Profile">
-                <div class="profile-pic"></div>
-                <div class="Text">John Doe</div>
-                <div class="Text">johndoe@gmail.com</div>
-                <div class="Text">6289814242</div>
-                <div class="Text">28, South Baishnav Para Road Post Garifa Dist 24 PGS North</div>
-                <div class="Text">West Bengal</div>
-                <div class="Text">Naihati</div>
-            </div>
+        <div id="Profile">
+            <div class="profile-pic" ><img src="<?php echo $data['picture']; ?>" alt=""></div>
+            <div class="Text"><?php echo $data['name']; ?></div>
+            <div class="Text" ><?php echo $data['email']; ?></div>
+            <div class="Text" ><?php echo $data['phone']; ?></div>
+            <div class="Text" ><?php echo $data['address']; ?></div>
+            <div class="Text" ><?php echo $data['state']; ?></div>
+            <div class="Text" ><?php echo $data['city']; ?></div>
+        </div>
         </div>
     </div>
     <?php

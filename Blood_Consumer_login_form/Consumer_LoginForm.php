@@ -84,6 +84,13 @@ if(isset($_POST['sub']))
       <h1 class="stylish-underline">Log in</h1>
       <div class="formfield">
         <form action="" method="post">
+        <?php if($has_errors){?>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error!</strong>
+            <?php echo $err; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
             <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
