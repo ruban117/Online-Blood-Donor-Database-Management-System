@@ -12,6 +12,8 @@
       echo $mail;
     }
 
+    $data=$db->ReadReports();
+
 ?>
 
 <!doctype html>
@@ -79,34 +81,15 @@
       </tr>
     </thead>
     <tbody>
+    <?php $i=1; foreach($data as $row){?>
       <tr>
-        <th scope="row">1</th>
-        <td>rubanpathak706@gmail.com</td>
-        <td>johndoe@gmail.com</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem praesentium quam eaque reprehenderit tenetur ex ab quo itaque id, expedita est placeat nihil sit eos obcaecati sapiente exercitationem temporibus velit laborum totam consectetur non possimus quisquam. Ut illum aut blanditiis?</td>
+        <th scope="row"><?php echo $i; ?></th>
+        <td><?php echo $row['reporter']; ?></td>
+        <td><?php echo $row['reportie']; ?></td>
+        <td><?php echo $row['content']; ?></td>
         <td><button type="button" class="btn btn-warning warn">Send</button></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>soumitad991@gmail.com</td>
-        <td>harry@gmail.com</td>
-        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta architecto saepe velit quaerat, suscipit harum autem atque modi, nostrum quos magnam. At unde iusto, dolor dolorem quod modi voluptates consequatur alias mollitia cum. Eaque, similique expedita. Sed voluptatibus vel laboriosam nisi in, cum illo quasi obcaecati unde earum amet tenetur!</td>
-        <td><button type="button" class="btn btn-warning warn">Send</button></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>souvikbanerjee241@gmail.com</td>
-        <td>harry@gmail.com</td>
-        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta architecto saepe velit quaerat, suscipit harum autem atque modi, nostrum quos magnam. At unde iusto, dolor dolorem quod modi voluptates consequatur alias mollitia cum. Eaque, similique expedita. Sed voluptatibus vel laboriosam nisi in, cum illo quasi obcaecati unde earum amet tenetur!</td>
-        <td><button type="button" class="btn btn-warning warn">Send</button></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>sinhasusmita@gmail.com</td>
-        <td>harry@gmail.com</td>
-        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta architecto saepe velit quaerat, suscipit harum autem atque modi, nostrum quos magnam. At unde iusto, dolor dolorem quod modi voluptates consequatur alias mollitia cum. Eaque, similique expedita. Sed voluptatibus vel laboriosam nisi in, cum illo quasi obcaecati unde earum amet tenetur!</td>
-        <td><button type="button" class="btn btn-warning warn">Send</button></td>
-      </tr>
+      <?php $i++; }?>
     </tbody>
   </table>
   <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>

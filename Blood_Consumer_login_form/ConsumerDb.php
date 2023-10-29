@@ -102,4 +102,11 @@ class Consumerdb{
         }
         return $data;
     }
+
+    public function Report($email1,$email2,$content){
+        $sql="INSERT INTO reports (reporter, reportie, content) VALUES (:email1,:email2,:content)";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email1' => $email1, 'email2' => $email2, 'content' => $content]);
+        return true;
+    }
 }

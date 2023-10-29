@@ -133,6 +133,14 @@
             $no_of_users = $stmt->fetchColumn(); // Use fetchColumn() to get the count
             return $no_of_users;
         }
+
+        public function TotalReports() {
+            $sql = "SELECT COUNT(*) FROM reports"; // Remove the single quotes
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(); // Use an associative array to bind the parameter
+            $no_of_users = $stmt->fetchColumn(); // Use fetchColumn() to get the count
+            return $no_of_users;
+        }
         
 
 
@@ -161,6 +169,18 @@
             }else{
                 return 'Sent';
             }
+        }
+
+        public function ReadReports(){
+            $data=array();
+            $sql="SELECT * FROM reports";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[]=$row;
+            }
+            return $data;
         }
     }
 

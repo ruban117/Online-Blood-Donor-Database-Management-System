@@ -1,5 +1,7 @@
 <?php
 error_reporting(0);
+$is_right=false;
+$success='';
 require_once "../Blood_Consumer_login_form/ConsumerDb.php";
 require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 session_start();
@@ -33,6 +35,16 @@ if(isset($_POST['fsub'])){
   $db2->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);
 }
 
+if(isset($_POST['rep'])){
+  $repby=$_POST['reqemail'];
+  $repto=$_POST['donemail'];
+  $content=$_POST['content'];
+
+  $db->Report($repby,$repto,$content);
+  $is_right=true;
+  $success='Report Sent Successfully We Will Surely Investigate It!!!';
+}
+
 
 ?>
 
@@ -56,6 +68,13 @@ if(isset($_POST['fsub'])){
 </head>
 
 <body>
+<?php if($is_right){?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>
+            <?php echo $success; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
   <table id="myTable" class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -64,8 +83,11 @@ if(isset($_POST['fsub'])){
         <th scope="col" style="color: black;">Donors Name</th>
         <th scope="col" style="color: black;">Donors Blood Group</th>
         <th scope="col" style="color: black;">Donors Email Id</th>
+        <th scope="col" style="color: black;">Donors Address</th>
+        <th scope="col" style="color: black;">Donors City</th>
+        <th scope="col" style="color: black;">Donors Age</th>
+        <th scope="col" style="color: black;">Donors Pin</th>
         <th scope="col" style="color: black;">Send Blood Request</th>
-        <th scope="col" style="color: black;">View Profile</th>
         <th scope="col" style="color: black;">Report Donor</th>
       </tr>
     </thead>
@@ -89,13 +111,53 @@ if(isset($_POST['fsub'])){
         <td>
           <?php echo $row['email'];?>
         </td>
+        <td>
+          <?php echo $row['address'];?>
+        </td>
+        <td>
+          <?php echo $row['city'];?>
+        </td>
+        <td>
+          <?php echo $row['age'];?>
+        </td>
+        <td>
+          <?php echo $row['pincode'];?>
+        </td>
         <td><button type="button" class="btn one btn-warning">Send Blood Request</button></td>
-        <td><button type="button" class="btn two btn-primary">View Profile</button></td>
         <td><button type="button" class="btn three btn-danger">Report Donor</button></td>
       </tr>
       <?php $i++; }?>
     </tbody>
   </table>
+
+  <!-- Modal Send Report To Blood Donor-->
+  <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Do You Want To Report This User?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="">
+            <div class="mb-3">
+              <input type="hidden" name="reqemail" value="<?php echo $datas['email'];?>" class="form-control" id="nemail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <input type="hidden" name="donemail"  class="form-control" id="donemail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="address">Describe Your Problem</label>
+              <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" required></textarea>
+          </div>
+            <div class="form-group">
+              <button type="submit" name="rep" id="fsub" class="btn btn-danger btn-block">Report User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- Modal Send Mail For Blood Request -->
@@ -133,14 +195,21 @@ if(isset($_POST['fsub'])){
   <script>
     let table = new DataTable('#myTable');
     let a = document.getElementsByClassName('one')[0];
-    let b = document.getElementsByClassName('two')[0];
-    let c = document.getElementsByClassName('three')[0];
+    let b = document.getElementsByClassName('three')[0];
+
 
     a.addEventListener('click', (e) => {
       $('#mailModal').modal('toggle');
       tr = e.target.parentNode.parentNode;
       email = tr.getElementsByTagName("td")[4].innerText;
       nemail.value = email;
+    })
+
+    b.addEventListener('click', (e) => {
+      $('#reportModal').modal('toggle');
+      tr = e.target.parentNode.parentNode;
+      email = tr.getElementsByTagName("td")[4].innerText;
+      donemail.value = email;
     })
   </script>
 

@@ -94,7 +94,7 @@
             <p><?php echo $db->TotalMembers();?></p>
             </div>
             <div class="total">Reports Count
-            <p>50</p>
+            <p><?php echo $db->TotalReports();?></p>
             </div>
         </div>
     </div>
