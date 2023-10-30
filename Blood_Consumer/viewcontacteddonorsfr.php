@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true))
     exit; 
 }
 
-$data=$db->Contacted_Donors();
+$data=$db->Contacted_Donors($_SESSION['username']);
 ?>
 
 
@@ -21,7 +21,7 @@ $data=$db->Contacted_Donors();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Pannel</title>
-  <link rel="stylesheet" href="admin_page.css">
+  <link rel="stylesheet" href="consumer.css">
   <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"-->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -37,8 +37,10 @@ $data=$db->Contacted_Donors();
             <th scope="col" style="color: black;">Profile Picture</th>
             <th scope="col" style="color: black;">Donor's Name</th>
             <th scope="col" style="color: black;">Donor's Email</th>
+            <th scope="col" style="color: black;">Donor's Phone</th>
             <th scope="col" style="color: black;">Requested Blood</th>
             <th scope="col" style="color: black;">Timing</th>
+            <th scope="col" style="color: black;">Request Status</th>
             <th scope="col" style="color: black;">Report User</th>
           </tr>
         </thead>
@@ -53,8 +55,10 @@ $data=$db->Contacted_Donors();
         </td>
             <td><?php echo $row['name'];?></td>
             <td><?php echo $row['email'];?></td>
+            <td><?php //echo $row['email'];?></td>
             <td><?php echo $row['blood_group'];?></td>
             <td><?php echo $row['date_time'];?></td>
+            <td><?php //echo $row['date_time'];?></td>
             <td><button type="button" class="btn btn-danger warn">Report</button></td>
           </tr>
           <?php $i++; }?>

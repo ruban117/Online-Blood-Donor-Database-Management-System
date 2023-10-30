@@ -128,6 +128,60 @@ class Donordb{
         $stmt->execute(['email'=>$email]);
     }
 
+    public function Contact_History($email){
+        $data = array();
+        $sql = "SELECT br.picture,br.name,br.email,br.blood_group,date_time
+                FROM contact_details cd
+                JOIN member br ON cd.requester_id = br.id
+                JOIN donor bd ON cd.donor_id = bd.id
+                WHERE bd.email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $data[] = $row;
+        }
+    
+        return $data;
+    }
+    public function Acceptence($email)
+    {
+        $sql="UPDATE member SET accepted= 0 WHERE email= :email";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['email'=>$email]);
+    }
+
+    public function AcceptTable($donemail,$reqemail){
+        $sql="INSERT INTO acceptance (donor_email,req_email,accepted) VALUES (:donemail,:reqemail,0)";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['donemail'=>$donemail,'reqemail'=>$reqemail]);
+        return true;
+    }
+
+    public function getaccept($donemail,$reqemail){
+        $sql="SELECT * FROM acceptance WHERE donor_email = :donemail AND req_email = :reqemail";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['donemail' => $donemail, 'reqemail'=>$reqemail]);
+        $result=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function getacceptrej($donemail,$reqemail){
+        $sql="INSERT INTO acceptance (donor_email,req_email,accepted) VALUES (:donemail,:reqemail,1)";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['donemail' => $donemail, 'reqemail'=>$reqemail]);
+        return true;
+    }
+
+    public function allcount($donemail,$reqemail)
+    {
+        $sql="SELECT COUNT(*) FROM acceptance WHERE donor_email = :donemail AND req_email = :reqemail";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['donemail' => $donemail, 'reqemail'=>$reqemail]);
+        $no_of_users=$stmt->fetchColumn();
+        return $no_of_users;
+    }
+    
 }
 
 ?>

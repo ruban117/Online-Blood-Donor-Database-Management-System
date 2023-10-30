@@ -334,12 +334,11 @@ ul {
   color: #ffffff;
 }
 
-.propic {
+.propic img{
   height: 80px;
   width: 80px;
   border-radius: 50%;
   border: 2px solid black;
-  background-image: url("Pictures/Profile-Avtaar.png");
   background-size: cover;
 }
 

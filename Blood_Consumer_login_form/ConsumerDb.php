@@ -117,14 +117,15 @@ class Consumerdb{
         return true;
     }
 
-    public function Contacted_Donors(){
+    public function Contacted_Donors($email){
         $data = array();
         $sql = "SELECT bd.picture,bd.name,bd.email,bd.blood_group,date_time
                 FROM contact_details cd
                 JOIN member br ON cd.requester_id = br.id
-                JOIN donor bd ON cd.donor_id = bd.id";
+                JOIN donor bd ON cd.donor_id = bd.id
+                WHERE br.email = :email";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(['email' => $email]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
             $data[] = $row;
