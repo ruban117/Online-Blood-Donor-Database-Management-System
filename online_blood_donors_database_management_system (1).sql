@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2023 at 07:56 PM
+-- Generation Time: Oct 30, 2023 at 07:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -47,6 +47,26 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `name`, `email`, `phoneno`, `address`, `pin_code`, `blood_group`, `state`, `city`, `picture`, `password`) VALUES
 (2, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, South Baishnavpara Road Post:- Garifa Dist:- 24 PGS (North)', '743166', 'B+', 'West Bengal', 'Naihati', '../images/20231001_204231.jpg', 'aruda4344');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_details`
+--
+
+CREATE TABLE `contact_details` (
+  `c_id` int(11) NOT NULL,
+  `requester_id` int(11) NOT NULL,
+  `donor_id` int(11) NOT NULL,
+  `date_time` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_details`
+--
+
+INSERT INTO `contact_details` (`c_id`, `requester_id`, `donor_id`, `date_time`) VALUES
+(1, 1, 2, '2023-10-30 11:15:43');
 
 -- --------------------------------------------------------
 
@@ -139,6 +159,14 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `phoneno` (`phoneno`);
 
 --
+-- Indexes for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  ADD PRIMARY KEY (`c_id`),
+  ADD KEY `requester_id` (`requester_id`),
+  ADD KEY `donor_id` (`donor_id`);
+
+--
 -- Indexes for table `donor`
 --
 ALTER TABLE `donor`
@@ -167,6 +195,12 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `donor`
 --
 ALTER TABLE `donor`
@@ -183,6 +217,17 @@ ALTER TABLE `member`
 --
 ALTER TABLE `reports`
   MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `contact_details`
+--
+ALTER TABLE `contact_details`
+  ADD CONSTRAINT `contact_details_ibfk_1` FOREIGN KEY (`requester_id`) REFERENCES `member` (`id`),
+  ADD CONSTRAINT `contact_details_ibfk_2` FOREIGN KEY (`donor_id`) REFERENCES `donor` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
