@@ -109,4 +109,27 @@ class Consumerdb{
         $stmt->execute(['email1' => $email1, 'email2' => $email2, 'content' => $content]);
         return true;
     }
+
+    public function Contact_Details($reqid,$donid){
+        $sql="INSERT INTO contact_details (requester_id,donor_id) VALUES (:reqid,:donid)";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['reqid' => $reqid, 'donid' => $donid]);
+        return true;
+    }
+
+    public function Contacted_Donors(){
+        $data = array();
+        $sql = "SELECT bd.picture,bd.name,bd.email,bd.blood_group,date_time
+                FROM contact_details cd
+                JOIN member br ON cd.requester_id = br.id
+                JOIN donor bd ON cd.donor_id = bd.id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $data[] = $row;
+        }
+    
+        return $data;
+    }
 }

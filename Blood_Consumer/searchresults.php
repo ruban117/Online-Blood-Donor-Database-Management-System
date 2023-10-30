@@ -32,7 +32,10 @@ if(isset($_POST['fsub'])){
           
           This revised email conveys the importance of the recipients blood donation and fosters a sense of community and hope.
           ';
+  $reqid=$datas['id'];
+  $donid=$datass['id'];
   $db2->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);
+  $db->Contact_Details($reqid,$donid);
 }
 
 if(isset($_POST['rep'])){
@@ -171,7 +174,7 @@ if(isset($_POST['rep'])){
         <div class="modal-body">
           <form method="post" action="">
             <div class="mb-3">
-              <input type="hidden" name="email" class="form-control" id="nemail" aria-describedby="emailHelp">
+              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <button type="submit" name="fsub" id="fsub" class="btn btn-danger btn-block">Send Blood Request</button>
@@ -202,7 +205,8 @@ if(isset($_POST['rep'])){
       $('#mailModal').modal('toggle');
       tr = e.target.parentNode.parentNode;
       email = tr.getElementsByTagName("td")[4].innerText;
-      nemail.value = email;
+      //console.log(email);
+      document.getElementById("email").value = email;
     })
 
     b.addEventListener('click', (e) => {

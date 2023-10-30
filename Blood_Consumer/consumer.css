@@ -86,11 +86,10 @@ ul {
   color: #fe0000;
 }
 
-.propic{
+.propic img{
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  background-image: url("Pictures/Profile-Avtaar.png");
   background-size: cover;
 }
 

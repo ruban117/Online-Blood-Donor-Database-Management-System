@@ -2,13 +2,15 @@
 session_start();
 $has_error=false;
 $error="";
-require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
-$db=new Donordb();
+require_once "../Blood_Consumer_login_form/ConsumerDb.php";
+$db=new Consumerdb();
 if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
 {
-    header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
+    header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
     exit; 
 }
+
+$data=$db->Contacted_Donors();
 ?>
 
 
@@ -33,25 +35,29 @@ if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true))
           <tr>
             <th scope="col" style="color: black;">SL NO</th>
             <th scope="col" style="color: black;">Profile Picture</th>
-            <th scope="col" style="color: black;">Requester's Name</th>
-            <th scope="col" style="color: black;">Requester's Email</th>
+            <th scope="col" style="color: black;">Donor's Name</th>
+            <th scope="col" style="color: black;">Donor's Email</th>
             <th scope="col" style="color: black;">Requested Blood</th>
+            <th scope="col" style="color: black;">Timing</th>
             <th scope="col" style="color: black;">Report User</th>
           </tr>
         </thead>
         <tbody>
+        <?php $i=1; foreach($data as $row){?>
           <tr>
-            <td></td>
+            <td><?php echo $i;?></td>
             <td scope="row">
-                <div class="propic">
-                  <img src="" alt="">
-                </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+              <div class="propic">
+                <img src="<?php echo $row['picture']?>" alt="">
+          </div>
+        </td>
+            <td><?php echo $row['name'];?></td>
+            <td><?php echo $row['email'];?></td>
+            <td><?php echo $row['blood_group'];?></td>
+            <td><?php echo $row['date_time'];?></td>
+            <td><button type="button" class="btn btn-danger warn">Report</button></td>
           </tr>
+          <?php $i++; }?>
         </tbody>
       </table>
 <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>
