@@ -182,6 +182,27 @@
             }
             return $data;
         }
+
+        public function ReadAllContactedPeople(){
+            $data=array();
+            $sql="SELECT
+            br.email AS requester_email,
+            br.picture AS requester_pic,
+            bd.email AS donor_email,
+            bd.picture AS donor_pic,
+            br.blood_group,
+            cd.date_time
+            FROM contact_details cd
+            JOIN member br ON cd.requester_id = br.id
+            JOIN donor bd ON cd.donor_id = bd.id";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[]=$row;
+            }
+            return $data;
+        }
     }
 
 ?>

@@ -3,7 +3,9 @@ session_start();
 $has_error=false;
 $error="";
 require_once "../Blood_Consumer_login_form/ConsumerDb.php";
+require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 $db=new Consumerdb();
+$db2=new Donordb();
 if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
 {
     header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
@@ -55,10 +57,29 @@ $data=$db->Contacted_Donors($_SESSION['username']);
         </td>
             <td><?php echo $row['name'];?></td>
             <td><?php echo $row['email'];?></td>
-            <td><?php //echo $row['email'];?></td>
+            <td><?php 
+                $datassss=$db->getaccept($row['email'],$_SESSION['username']);
+                  if($db->allcount($row['email'],$_SESSION['username'])==1 && $datassss['accepted']==0){
+                     $d=$db2->Get_data($row['email']);
+                     echo $d['phone'];
+                  }else{
+                    echo "";
+                  }
+                ?></td>
+              </td>
             <td><?php echo $row['blood_group'];?></td>
             <td><?php echo $row['date_time'];?></td>
-            <td><?php //echo $row['date_time'];?></td>
+            <td style="color: blue;"><b><?php 
+              $datassss=$db->getaccept($row['email'],$_SESSION['username']);
+              if($db->allcount($row['email'],$_SESSION['username'])==1 && $datassss['accepted']==0){
+                echo "Accepted";
+              }else if($db->allcount($row['email'],$_SESSION['username'])==0){
+                echo "Pending";
+              }
+              else if($db->allcount($row['email'],$_SESSION['username'])==1 && $datassss['accepted']==1){
+                echo "Rejected";
+              }
+            ?></b></td>
             <td><button type="button" class="btn btn-danger warn">Report</button></td>
           </tr>
           <?php $i++; }?>

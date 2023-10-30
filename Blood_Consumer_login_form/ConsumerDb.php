@@ -133,4 +133,21 @@ class Consumerdb{
     
         return $data;
     }
+
+    public function getaccept($donemail,$reqemail){
+        $sql="SELECT * FROM acceptance WHERE donor_email = :donemail AND req_email = :reqemail";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['donemail' => $donemail, 'reqemail'=>$reqemail]);
+        $result=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function allcount($donemail,$reqemail)
+    {
+        $sql="SELECT COUNT(*) FROM acceptance WHERE donor_email = :donemail AND req_email = :reqemail";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['donemail' => $donemail, 'reqemail'=>$reqemail]);
+        $no_of_users=$stmt->fetchColumn();
+        return $no_of_users;
+    }
 }
