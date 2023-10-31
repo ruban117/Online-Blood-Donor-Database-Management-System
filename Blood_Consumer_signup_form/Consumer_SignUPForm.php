@@ -97,7 +97,7 @@ if(isset($_POST['sub']))
 ?>
   <div class="inner">
     <div class="heading">
-      <h3>Join As Blood Requester</h3>
+      <h3>Join As Member</h3>
     </div>
   </div>
   <div class="inner2">

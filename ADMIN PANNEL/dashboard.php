@@ -82,7 +82,7 @@
             <li><a href="../Admin Login/logout.php"><i class="fa-solid fa-power-off"></i>Logout</a></li>
         </ul> 
     </div>
-    <div class="main_content">
+    <div class="main_content" >
         <div class="header Dashboard">Welcome <?php echo $db->getName($_SESSION['uname']); ?> </div>  
         <div class="info Dashboard">
           <img src="Pictures/blood-2667009_640.jpg" alt="" class="Dashboard">

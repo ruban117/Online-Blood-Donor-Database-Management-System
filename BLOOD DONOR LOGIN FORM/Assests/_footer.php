@@ -98,5 +98,5 @@
 </div>
 
 <div class="foot-4">
-    <p style="text-align:center;color:#ffffff;font-size:20px;">Copyright © @2023 Online Blood Donation All Rights Reserved</p>
+    <p style="text-align:center;color:#ffffff;font-size:20px;">Copyright © @2023 Spread The Red All Rights Reserved</p>
 </div>

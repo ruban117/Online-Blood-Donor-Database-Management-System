@@ -40,7 +40,7 @@ echo '
             <a class="nav-link" href="../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php">Donor Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../Blood_Consumer_login_form/Consumer_LoginForm.php">Requester Login</a>
+            <a class="nav-link" href="../Blood_Consumer_login_form/Consumer_LoginForm.php">Member Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../About Us/aboutus.php">About Us</a>
