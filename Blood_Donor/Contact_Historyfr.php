@@ -12,18 +12,50 @@
       header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
       exit; 
   }
+  $is_right=false;
+  $success='';
   $data=$db->Contact_History($_SESSION['username']);
   $datas=$db->Get_data($_SESSION['username']);
   if(isset($_POST['accept'])){
     $email=$_POST['reqemail'];
     if($db->allcount($_SESSION['username'],$email)==0){
       $db->AcceptTable($_SESSION['username'],$email);
+      $msg='
+        Dear User,<br><br>
+        Congratulations, Your Blood Requested Has Been Approved By '.$_SESSION['username'].'<br><br>
+        Please Go to Your Profile And Go View Contact History tab to get access donor contact details.<br><br>
+        Regards,<br><br>
+        Social Service Group<br><br>
+        Online Blood Donors Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $db->smtp_mailer($email,'OBDDMS: Blood Request Acepted', $msg);
     }
   }
 
   if(isset($_POST['reject'])){
     $email=$_POST['reqemail2'];
     $db->getacceptrej($_SESSION['username'],$email);
+    $msg='
+        Dear User,<br><br>
+        Your Blood Requested Has Been Rejected By '.$_SESSION['username'].'<br><br>
+        Please Go to Your Profile And Go View Contact History tab to get access donor contact details.<br><br>
+        Regards,<br><br>
+        Social Service Group<br><br>
+        Online Blood Donors Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $db->smtp_mailer($email,'OBDDMS: Blood Request Rejected', $msg);
+  }
+
+  if(isset($_POST['rep'])){
+    $repby=$_POST['reporter'];
+    $repto=$_POST['reportie'];
+    $content=$_POST['content'];
+  
+    $db->Report($repby,$repto,$content);
+    $is_right=true;
+    $success='Report Sent Successfully We Will Surely Investigate It!!!';
   }
 
 
@@ -46,6 +78,12 @@
 </head>
 
 <body>
+<?php if($is_right){?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $success; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
     <table id="myTable" class="table table-striped">
         <thead class="thead-dark">
           <tr>
@@ -97,7 +135,7 @@
             ?></td>
             <td><button type="button" class="btn btn-primary warn">Accept Request</button></td>
             <td><button type="button" class="btn btn-warning warn2">Reject Request</button></td>
-            <td><button type="button" class="btn btn-danger">Report</button></td>
+            <td><button type="button" class="btn btn-danger report">Report</button></td>
           </tr>
           <?php $i++; }?>
         </tbody>
@@ -114,7 +152,7 @@
         <div class="modal-body">
           <form method="post" action="">
             <div class="mb-3">
-              <input type="email" name="reqemail" id="reqemail" class="form-control" id="nemail" aria-describedby="emailHelp">
+              <input type="hidden" name="reqemail" id="reqemail" class="form-control" id="nemail" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <button type="submit" name="accept" id="fsub" class="btn btn-primary btn-block">Accept</button>
@@ -125,7 +163,7 @@
     </div>
   </div>
 
-  <!-- Modal Accept-->
+  <!-- Modal Reject-->
   <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -136,10 +174,39 @@
         <div class="modal-body">
           <form method="post" action="">
             <div class="mb-3">
-              <input type="email" name="reqemail2" id="reqemail2" class="form-control" id="nemail" aria-describedby="emailHelp">
+              <input type="hidden" name="reqemail2" id="reqemail2" class="form-control" id="nemail" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <button type="submit" name="reject" id="fsub" class="btn btn-warning btn-block">Reject</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Report-->
+  <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Do You Want To Report This User?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="">
+            <div class="mb-3">
+              <input type="hidden" name="reportie" class="form-control" id="reqemail3" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <input type="hidden" name="reporter" value="<?php echo $datas['email'];?>"  class="form-control" id="donemail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="address">Describe Your Problem</label>
+              <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" required></textarea>
+          </div>
+            <div class="form-group">
+              <button type="submit" name="rep" id="fsub" class="btn btn-danger btn-block">Report User</button>
             </div>
           </form>
         </div>
@@ -160,7 +227,7 @@
   let table = new DataTable('#myTable');
   let a=document.getElementsByClassName('warn');
   let b=document.getElementsByClassName('warn2');
-
+  let c=document.getElementsByClassName('report');
   Array.from(a).forEach((elements)=>{
     elements.addEventListener('click',(e)=>{
       $('#acceptModal').modal('toggle');
@@ -175,6 +242,15 @@
       let c=e.target.parentNode.parentNode;
       let mail=c.getElementsByTagName("td")[3].innerText;
       reqemail2.value=mail;
+    });
+  });
+
+  Array.from(c).forEach((elements)=>{
+    elements.addEventListener('click',(e)=>{
+      $('#reportModal').modal('toggle');
+      let c=e.target.parentNode.parentNode;
+      let mail=c.getElementsByTagName("td")[3].innerText;
+      reqemail3.value=mail;
     });
   });
 </script>

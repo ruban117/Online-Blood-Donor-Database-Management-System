@@ -36,6 +36,8 @@ if(isset($_POST['fsub'])){
   $donid=$datass['id'];
   $db2->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);
   $db->Contact_Details($reqid,$donid);
+  $is_right=true;
+  $success='Blood Request Sent Successfully';
 }
 
 if(isset($_POST['rep'])){
@@ -174,7 +176,7 @@ if(isset($_POST['rep'])){
         <div class="modal-body">
           <form method="post" action="">
             <div class="mb-3">
-              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+              <input type="hidden" name="email" class="form-control" id="email" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <button type="submit" name="fsub" id="fsub" class="btn btn-danger btn-block">Send Blood Request</button>
@@ -197,24 +199,29 @@ if(isset($_POST['rep'])){
   <script src="adminscript.js"></script>
   <script>
     let table = new DataTable('#myTable');
-    let a = document.getElementsByClassName('one')[0];
-    let b = document.getElementsByClassName('three')[0];
+    let a = document.getElementsByClassName('one');
+    let b = document.getElementsByClassName('three');
 
 
-    a.addEventListener('click', (e) => {
+    Array.from(a).forEach((elements)=>{
+    elements.addEventListener('click',(e)=>{
       $('#mailModal').modal('toggle');
+      console.log('Listened');
       tr = e.target.parentNode.parentNode;
       email = tr.getElementsByTagName("td")[4].innerText;
-      //console.log(email);
       document.getElementById("email").value = email;
     })
+  });
 
-    b.addEventListener('click', (e) => {
+    Array.from(b).forEach((elements)=>{
+    elements.addEventListener('click',(e)=>{
       $('#reportModal').modal('toggle');
+      console.log('Listened');
       tr = e.target.parentNode.parentNode;
       email = tr.getElementsByTagName("td")[4].innerText;
       donemail.value = email;
     })
+  });
   </script>
 
 

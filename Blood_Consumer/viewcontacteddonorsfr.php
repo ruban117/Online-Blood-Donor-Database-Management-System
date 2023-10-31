@@ -2,6 +2,8 @@
 session_start();
 $has_error=false;
 $error="";
+$is_right=false;
+$success='';
 require_once "../Blood_Consumer_login_form/ConsumerDb.php";
 require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 $db=new Consumerdb();
@@ -13,6 +15,17 @@ if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true))
 }
 
 $data=$db->Contacted_Donors($_SESSION['username']);
+$datas=$db->Get_data($_SESSION['username']);
+
+if(isset($_POST['rep'])){
+  $repby=$_POST['reporter'];
+  $repto=$_POST['reportie'];
+  $content=$_POST['content'];
+
+  $db->Report($repby,$repto,$content);
+  $is_right=true;
+  $success='Report Sent Successfully We Will Surely Investigate It!!!';
+}
 ?>
 
 
@@ -32,6 +45,13 @@ $data=$db->Contacted_Donors($_SESSION['username']);
 </head>
 
 <body>
+<?php if($is_right){?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>
+            <?php echo $success; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
     <table id="myTable" class="table table-striped">
         <thead class="thead-dark">
           <tr>
@@ -80,17 +100,61 @@ $data=$db->Contacted_Donors($_SESSION['username']);
                 echo "Rejected";
               }
             ?></b></td>
-            <td><button type="button" class="btn btn-danger warn">Report</button></td>
+            <td><button type="button" class="btn btn-danger three">Report</button></td>
           </tr>
           <?php $i++; }?>
         </tbody>
       </table>
+      <!-- Modal Send Report To Blood Donor-->
+  <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Do You Want To Report This User?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="">
+            <div class="mb-3">
+              <input type="hidden" name="reporter" value="<?php echo $datas['email'];?>" class="form-control" id="nemail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <input type="hidden" name="reportie"  class="form-control" id="donemail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="address">Describe Your Problem</label>
+              <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" required></textarea>
+          </div>
+            <div class="form-group">
+              <button type="submit" name="rep" id="fsub" class="btn btn-danger btn-block">Report User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script  src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script  src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
 <script src="adminscript.js"></script>
 <script>
   let table = new DataTable('#myTable');
+  let b = document.getElementsByClassName('three');
+  Array.from(b).forEach((elements)=>{
+    elements.addEventListener('click',(e)=>{
+      $('#reportModal').modal('toggle');
+      console.log('Listened');
+      tr = e.target.parentNode.parentNode;
+      email = tr.getElementsByTagName("td")[3].innerText;
+      donemail.value = email;
+    })
+  });
 </script>
 
 

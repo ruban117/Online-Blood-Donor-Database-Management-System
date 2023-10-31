@@ -54,7 +54,7 @@
                 </div>
             </td>
             <td><?php echo $row['donor_email'];?></td>
-            <td><?php echo $row['blood_group'];?></td>
+            <td><?php echo $row['req_blood'];?></td>
             <td><?php echo $row['date_time'];?></td>
           </tr>
           <?php $i++; }?>

@@ -6,10 +6,34 @@
         header("location: ../Admin Login/Admin_login.php");
         exit;
     }
+    $no_error=false;
+    $success='';
 
     if(isset($_POST['sub'])){
       $mail=$_POST['rby'];
-      echo $mail;
+      $mail2=$_POST['rto'];
+      $msg='
+        Dear User,<br><br>
+        We sincerely apologize for any inconvenience caused, and we have successfully issued a warning to the user with the email address: '.$mail2.'<br><br>
+        We hope you won`t encounter a similar situation in the future, and we appreciate your understanding.<br><br>
+        Regards,<br><br>
+        Social Service Investigating Team,<br><br>
+        Online Blood Doner Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $db->smtp_mailer($mail2,'OBDDMS: Your Report Has Been Aproved', $msg);
+      $msg2='
+        Dear User,<br><br>
+        You recieved a warning from OBDDMS for Violating our terms and condition<br><br>
+        If you do it further you will be blocked for lifetime.<br><br>
+        Regards,<br><br>
+        Social Service Investigating Team,<br><br>
+        Online Blood Doner Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $db->smtp_mailer($mail,'OBDDMS: You Get A Warning', $msg2);
+      $no_error=true;
+      $success="Warning Sent Successfully";
     }
 
     $data=$db->ReadReports();
@@ -70,6 +94,12 @@
       </div>
     </div>
   </div>
+  <?php if($no_error){?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $success; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
 <table id="myTable" class="table table-striped">
     <thead class="thead-dark">
       <tr>

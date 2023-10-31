@@ -190,7 +190,7 @@
             br.picture AS requester_pic,
             bd.email AS donor_email,
             bd.picture AS donor_pic,
-            br.blood_group,
+            bd.blood_group AS req_blood,
             cd.date_time
             FROM contact_details cd
             JOIN member br ON cd.requester_id = br.id
