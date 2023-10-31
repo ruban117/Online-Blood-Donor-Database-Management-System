@@ -1,3 +1,20 @@
+<?php
+
+require_once "not_member_db.php";
+
+$db=new not_memberDb();
+if(isset($_POST['submit']))
+{
+  $name=$_POST['name'];
+  $email=$_POST['email'];
+  $feedback=$_POST['feedback'];
+
+  $db->insert($name,$email,$feedback);
+}
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -16,21 +33,21 @@
 <body>
     <?php include 'Assests/_navbar.php'?>
     <div class="contacform">
-    <form>
+    <form method="post" action="">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Enter Your Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Enter Your Email </label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Enter Your Feedback</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="feedback"></textarea>
           </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-            <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+            <button type="submit" class="btn btn-danger btn-lg" name="submit">Submit</button>
           </div>
       </form>
     </div>
