@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2023 at 04:36 AM
+-- Generation Time: Oct 31, 2023 at 06:41 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -155,6 +155,26 @@ INSERT INTO `member` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `not_member`
+--
+
+CREATE TABLE `not_member` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `feedback` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `not_member`
+--
+
+INSERT INTO `not_member` (`id`, `name`, `email`, `feedback`) VALUES
+(1, 'souvik banerjee', 'souvikbanerjee241@gmail.com', 'a very good website..');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reports`
 --
 
@@ -213,6 +233,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `not_member`
+--
+ALTER TABLE `not_member`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
@@ -251,6 +277,12 @@ ALTER TABLE `donor`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `not_member`
+--
+ALTER TABLE `not_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `reports`
