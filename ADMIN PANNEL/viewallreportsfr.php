@@ -21,7 +21,7 @@
         Online Blood Doner Database Management System<br><br>
         Email:- obddms2023@gmail.com
       ';
-      $db->smtp_mailer($mail2,'OBDDMS: Your Report Has Been Aproved', $msg);
+      $db->smtp_mailer($mail,'OBDDMS: Your Report Has Been Aproved', $msg);
       $msg2='
         Dear User,<br><br>
         You recieved a warning from OBDDMS for Violating our terms and condition<br><br>
@@ -31,7 +31,7 @@
         Online Blood Doner Database Management System<br><br>
         Email:- obddms2023@gmail.com
       ';
-      $db->smtp_mailer($mail,'OBDDMS: You Get A Warning', $msg2);
+      $db->smtp_mailer($mail2,'OBDDMS: You Get A Warning', $msg2);
       $no_error=true;
       $success="Warning Sent Successfully";
     }
