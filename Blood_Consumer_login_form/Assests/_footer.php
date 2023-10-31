@@ -79,12 +79,12 @@
 </style>
 
 <div class="foot">
-    <h1 class="stylish-underline">Website Name</h1>
+    <h1 class="stylish-underline">Spread The Red</h1>
 </div>
 <div class="foot2">
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact Us</a>
+    <a href="../Home Page/home.php">Home</a>
+    <a href="../About Us/aboutus.php">About Us</a>
+    <a href="../Contact Us/contact.php">Contact Us</a>
     <a href="#">Privacy Policy</a>
     <a href="#">Terms & Conditions</a>
 </div>

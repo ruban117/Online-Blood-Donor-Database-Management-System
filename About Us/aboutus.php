@@ -21,18 +21,11 @@
                 <h1>Our Vision</h1>
                 <img src="binoculars.png" class="img-fluid pic">
             </div>
-            <div class="col textmid">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quo doloremqu quasi,
-                ducimus ipsum sunt omnis nulla laudantium? Debitis suscipit facere itaque sunt beatae facilis
-                reprehenderit soluta quisquam vel ea nam commodi assumenda officia sit totam qui, saepe dolorem tempora
-                impedit dicta repudiandae provident incidunt eius. Eaque praesentium sint dolores?Lorem ipsum dolor sit
-                amet consectetur adipisicing elit.</div>
+            <div class="col textmid">Our vision is to create a cutting-edge online blood donation platform that seamlessly connects blood donors, recipients, and healthcare providers, revolutionizing the way people access and contribute to the vital need for blood. Our website will be a beacon of hope and support for the global</div>
             <hr>
         </div>
         <div class="row pos">
-            <div class="col textmid">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quo doloremq quasi,
-                ducimus ipsum sunt omnis nulla laudantium? Debitis suscipit facere itaque sunt beatae facilis
-                reprehenderit soluta quisquam vel ea nam commodi assumenda officia sit totam qui, saepe dolorem tempora
-                impedit dicta repudiandae provident incidunt eius. Eaque praesentium sint dolores?</div>
+            <div class="col textmid">The primary goal of our blood donation online website is to create a user-friendly, efficient, and transparent platform that increases the number of registered donors, enhances user experience, optimizes blood matching, raises awareness and education, and fosters trust and transparency, ultimately saving more lives through timely and accessible blood donations.</div>
             <div class="col middle">
                 <h1>Our Goal</h1>
                 <img src="target.png" class="img-fluid pic">
@@ -44,10 +37,7 @@
                 <h1>Our Misson</h1>
                 <img src="goal.png" class="img-fluid pic">
             </div>
-            <div class="col textmid">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quo doloremqu quasi,
-                ducimus ipsum sunt omnis nulla laudantium? Debitis suscipit facere itaque sunt beatae facilis
-                reprehenderit soluta quisquam vel ea nam commodi assumenda officia sit totam qui, saepe dolorem tempora
-                impedit dicta repudiandae provident incidunt eius. Eaque praesentium sint dolores?</div>
+            <div class="col textmid">Our mission is to leverage technology to connect blood donors and recipients, facilitate life-saving donations, and promote a culture of voluntary and regular blood donation. We are dedicated to: Saving Lives, Streamlined Access, Empowering Communities, Education and Awareness, Efficiency and Accuracy.</div>
         </div>
     </div>
     <?php include "Assests/_footer.php" ?>

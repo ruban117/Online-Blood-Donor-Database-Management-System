@@ -47,7 +47,7 @@ echo '
     <body>
     <nav class="navbar navbar-expand-md navbar-light bg-body-tertiary fixed-top">
         <div class="container-fluid ">
-            <a class="navbar-brand " href="#"><i class="fa-solid fa-hand-holding-droplet" style="color: #fe0000;"></i></a>
+            <a class="navbar-brand " href="../Home Page/home.php"><i class="fa-solid fa-hand-holding-droplet" style="color: #fe0000;"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

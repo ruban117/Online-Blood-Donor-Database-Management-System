@@ -26,16 +26,21 @@
         </div>
       </div>
     </div>
-    <div class="login">
-      <div class="heading">
-        <h1>Heroes login here. Join the league of lifesavers<hr></h1> 
-      </div>
-      <div class="buttons">
-        <a href="#"><button type="button" class="btn">Join as Blood
-          Donors</button></a>
-        <a href="#"><button type="button" class="btn">Join as Blood Requesters</button></a>
-      </div>
-    </div> 
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col col-sm-10 col-md-9 col-lg-7  col m-auto pr-5" id="write">
+                Heroes login here. Join the league of lifesavers <hr>
+            </div>
+        </div>
+        <div class="row mt-5 mb-5">
+            <div class="col">
+                <div class="d-grid gap-5 col-6 mx-auto ss">
+                    <button class="btn btn-danger size" type="button"><a href="../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php">Join as Blood Donors</a></button>
+                    <button class="btn btn-danger size" type="button"><a href="../Blood_Consumer_login_form/Consumer_LoginForm.php">Join as a Member</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <?php include 'Assests/_footer.php'?>
   </body>
