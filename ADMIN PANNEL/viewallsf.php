@@ -1,4 +1,13 @@
-
+<?php
+    session_start();
+    require_once '../Admin Login/Admindb.php';
+    $db=new AdminDb();
+    if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) {
+        header("location: ../Admin Login/Admin_login.php");
+        exit;
+    }
+    $data=$db->ReadAllNotMember();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -26,30 +35,14 @@
           </tr>
         </thead>
         <tbody>
+        <?php $i=1; foreach($data as $row){?>
           <tr>
-            <td>1</td>
-            <td>Ruban Pathak</td>
-            <td>rubanpathak706@gmail.com</td>
-            <td>something</td>
+            <td><?php echo $i; ?></td>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['email']; ?></td>
+            <td><?php echo $row['feedback']; ?></td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Ruban Pathak</td>
-            <td>rubanpathak706@gmail.com</td>
-            <td>something</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ruban Pathak</td>
-            <td>rubanpathak706@gmail.com</td>
-            <td>something</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Ruban Pathak</td>
-            <td>rubanpathak706@gmail.com</td>
-            <td>something</td>
-          </tr>
+          <?php $i++; }?>
         </tbody>
       </table>
 <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>

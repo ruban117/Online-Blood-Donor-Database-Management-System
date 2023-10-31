@@ -83,7 +83,7 @@
     </div>
     <div class="main_content">
         <div id="View_All_SF" style="display: flex;align-items: center;justify-content: center;">
-         <iframe src="viewallsf.html" frameborder="0" style="height: 600px" width="90%"></iframe>
+         <iframe src="viewallsf.php" frameborder="0" style="height: 600px" width="90%"></iframe>
         </div>
     </div>
 </div>

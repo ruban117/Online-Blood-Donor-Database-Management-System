@@ -1,7 +1,8 @@
 <?php
 
 require_once "not_member_db.php";
-
+$is_right=false;
+$success='';
 $db=new not_memberDb();
 if(isset($_POST['submit']))
 {
@@ -10,6 +11,8 @@ if(isset($_POST['submit']))
   $feedback=$_POST['feedback'];
 
   $db->insert($name,$email,$feedback);
+  $is_right=true;
+  $success="Thanks For Your Feedback";
 }
 
 
@@ -34,6 +37,13 @@ if(isset($_POST['submit']))
     <?php include 'Assests/_navbar.php'?>
     <div class="contacform">
     <form method="post" action="">
+    <?php if($is_right){?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>
+            <?php echo $success; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Enter Your Name</label>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">

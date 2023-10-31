@@ -203,6 +203,18 @@
             }
             return $data;
         }
+
+        public function ReadAllNotMember(){
+            $data=array();
+            $sql="SELECT * FROM not_member";
+            $stmt=$this->conn->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $row){
+                $data[]=$row;
+            }
+            return $data;
+        }
     }
 
 ?>
