@@ -59,7 +59,8 @@ if(isset($_POST['rep'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Pannel</title>
+  <title>Spread The Red (Member)</title>
+    <link rel="icon" type="images/x-icon" href="../blood.png">
   <link rel="stylesheet" href="consumer.css">
   <link rel="stylesheet"
     href="D:\XAMPP\htdocs\Online Blood Donors Database Management System Website\Online-Blood-Donor-Database-Management-System\ADMIN PANNEL\admin_page.css">
