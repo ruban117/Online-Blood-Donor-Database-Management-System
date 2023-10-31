@@ -53,15 +53,7 @@ echo '
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav  ">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Contact Info</a>
-                </li>			
+            <li style="font-size: 20px;color:#fe0000;"><a href="../Admin Login/logout.php"><i class="fa-solid fa-power-off"></i></a></li>	
             </ul>		  
             </div>
         </div>
