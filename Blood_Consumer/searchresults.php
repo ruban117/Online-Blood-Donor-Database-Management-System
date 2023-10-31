@@ -18,7 +18,7 @@ if(isset($_POST['fsub'])){
   $mail=$_POST['email'];
   $senderemail=$_SESSION['username'];
   $datass=$db2->Get_data($mail);
-  $html='Dear '. $datass['name'].'<br>,
+  $html='Dear '. $datass['name'].',<br>
 
           We extend our heartfelt gratitude for your noble spirit. A blood request from ' . $datas['name'] . ' is a call for hope, and you have the opportunity to be a lifeline. By donating your blood to this individual, you can become a part of a compassionate community.
           <br><br>
