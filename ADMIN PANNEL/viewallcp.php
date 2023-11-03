@@ -32,9 +32,9 @@
           <tr>
             <th scope="col" style="color: black;">Sl No</th>
             <th scope="col" style="color: black;">Picture</th>
-            <th scope="col" style="color: black;">Requester Email</th>
+            <th scope="col" style="color: black;">Requester Name</th>
             <th scope="col" style="color: black;">Picture</th>
-            <th scope="col" style="color: black;">Donor Email</th>
+            <th scope="col" style="color: black;">Donor Name</th>
             <th scope="col" style="color: black;">Requested Blood</th>
             <th scope="col" style="color: black;">Date And Time</th>
           </tr>
@@ -48,13 +48,13 @@
                   <img src="<?php echo $row['requester_pic']?>" alt="">
                 </div>
             </td>
-            <td><?php echo $row['requester_email'];?></td>
+            <td><?php echo $row['requester_name'];?></td>
             <td scope="row">
                 <div class="propic">
                   <img src="<?php echo $row['donor_pic']?>" alt="">
                 </div>
             </td>
-            <td><?php echo $row['donor_email'];?></td>
+            <td><?php echo $row['donor_name'];?></td>
             <td><?php echo $row['req_blood'];?></td>
             <td><?php echo $row['date_time'];?></td>
           </tr>

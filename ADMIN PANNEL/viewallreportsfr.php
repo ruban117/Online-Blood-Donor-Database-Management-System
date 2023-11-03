@@ -1,7 +1,14 @@
 <?php
     session_start();
     require_once '../Admin Login/Admindb.php';
+    require_once '../BLOOD DONOR LOGIN FORM/donordb.php';
+    require_once '../Blood_Consumer_login_form/ConsumerDb.php';
+    require_once '../Mail/smtpmailer.php';
+
     $db=new AdminDb();
+    $db2=new Donordb();
+    $db3=new Consumerdb();
+    $m=new Mail();
     if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) {
         header("location: ../Admin Login/Admin_login.php");
         exit;
@@ -21,7 +28,7 @@
         Online Blood Doner Database Management System<br><br>
         Email:- obddms2023@gmail.com
       ';
-      $db->smtp_mailer($mail,'OBDDMS: Your Report Has Been Aproved', $msg);
+      $m->smtp_mailer($mail,'OBDDMS: Your Report Has Been Aproved', $msg);
       $msg2='
         Dear User,<br><br>
         You recieved a warning from OBDDMS for Violating our terms and condition<br><br>
@@ -31,9 +38,44 @@
         Online Blood Doner Database Management System<br><br>
         Email:- obddms2023@gmail.com
       ';
-      $db->smtp_mailer($mail2,'OBDDMS: You Get A Warning', $msg2);
+      $m->smtp_mailer($mail2,'OBDDMS: You Get A Warning', $msg2);
       $no_error=true;
       $success="Warning Sent Successfully";
+    }
+
+    if(isset($_POST['bsub'])){
+      $email=$_POST['rt'];
+
+      if($db2->exists($email) == 1){
+        $db2->Block($email);
+        $msg2='
+        Dear User,<br><br>
+        You have been blocked from OBDDMS for Violating our terms and condition<br><br>
+        To review it contact in this email obddms2023@gmail.com<br><br>
+        Regards,<br><br>
+        Social Service Investigating Team,<br><br>
+        Online Blood Doner Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $m->smtp_mailer($email,'OBDDMS: You Have Been Blocked', $msg2);
+      $no_error=true;
+      $success="User Blocked";
+      }
+      else if($db3->exists($email) == 1){
+        $db3->Block($email);
+        $msg2='
+        Dear User,<br><br>
+        You have been blocked from OBDDMS for Violating our terms and condition<br><br>
+        To review it contact in this email obddms2023@gmail.com<br><br>
+        Regards,<br><br>
+        Social Service Investigating Team,<br><br>
+        Online Blood Doner Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $m->smtp_mailer($email,'OBDDMS: You Have Been Blocked', $msg2);
+      $no_error=true;
+      $success="User Blocked";
+      }
     }
 
     $data=$db->ReadReports();
@@ -95,6 +137,41 @@
       </div>
     </div>
   </div>
+
+
+  <!---------------------------------Block Modal---------------------------->
+  <div class="modal fade" id="blockModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Block User</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body px-4">
+          <form action="" method="post" id="form-data">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Block</label>
+              <input type="email" name='rt' class="form-control" id="rt" aria-describedby="emailHelp">
+            </div>
+            <br>
+            <div class="form-group">
+              <button type="submit" name="bsub" id="fsub" class="btn btn-danger btn-block">Block User</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <?php if($no_error){?>
           <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo $success; ?>
@@ -109,6 +186,7 @@
         <th scope="col" style="color: black;">Report To</th>
         <th scope="col" style="color: black;">Report Description</th>
         <th scope="col" style="color: black;">Send Warning</th>
+        <th scope="col" style="color: black;">Block User</th>
       </tr>
     </thead>
     <tbody>
@@ -119,6 +197,7 @@
         <td><?php echo $row['reportie']; ?></td>
         <td><?php echo $row['content']; ?></td>
         <td><button type="button" class="btn btn-warning warn">Send</button></td>
+        <td><button type="button" class="btn btn-danger block">Block User</button></td>
       </tr>
       <?php $i++; }?>
     </tbody>
@@ -132,6 +211,7 @@
 <script>
   let table = new DataTable('#myTable');
   let a=document.getElementsByClassName('warn');
+  let b=document.getElementsByClassName('block');
   Array.from(a).forEach((elements)=>{
     elements.addEventListener('click',(e)=>{
       $('#warnModal').modal('toggle');
@@ -141,6 +221,16 @@
       let repto=c.getElementsByTagName("td")[1].innerText;
       rby.value=repby;
       rto.value=repto;
+    })
+  });
+
+  Array.from(b).forEach((elements)=>{
+    elements.addEventListener('click',(e)=>{
+      $('#blockModal').modal('toggle');
+      console.log('Listened');
+      let c=e.target.parentNode.parentNode;
+      let rept=c.getElementsByTagName("td")[1].innerText;
+      rt.value=rept;
     })
   });
 </script>

@@ -1,5 +1,4 @@
 <?php
-    include('../smtp/PHPMailerAutoload.php');
     class AdminDb{
         private $dsn="mysql:host=localhost; dbname=online_blood_donors_database_management_system";
         private $user="root";
@@ -143,34 +142,6 @@
         }
         
 
-
-        public function smtp_mailer($to,$subject, $msg){
-            $mail = new PHPMailer(); 
-            $mail->IsSMTP(); 
-            $mail->SMTPAuth = true; 
-            $mail->SMTPSecure = 'tls'; 
-            $mail->Host = "smtp.gmail.com";
-            $mail->Port = 587; 
-            $mail->IsHTML(true);
-            $mail->CharSet = 'UTF-8'; 
-            $mail->Username = "obddms2023@gmail.com";
-            $mail->Password = "wtzcejzdqevwrxsb";
-            $mail->SetFrom("obddms2023@gmail.com");
-            $mail->Subject = $subject;
-            $mail->Body =$msg;
-            $mail->AddAddress($to);
-            $mail->SMTPOptions=array('ssl'=>array(
-                'verify_peer'=>false,
-                'verify_peer_name'=>false,
-                'allow_self_signed'=>false
-            ));
-            if(!$mail->Send()){
-                echo $mail->ErrorInfo;
-            }else{
-                return 'Sent';
-            }
-        }
-
         public function ReadReports(){
             $data=array();
             $sql="SELECT * FROM reports";
@@ -186,9 +157,9 @@
         public function ReadAllContactedPeople(){
             $data=array();
             $sql="SELECT
-            br.email AS requester_email,
+            br.name AS requester_name,
             br.picture AS requester_pic,
-            bd.email AS donor_email,
+            bd.name AS donor_name,
             bd.picture AS donor_pic,
             bd.blood_group AS req_blood,
             cd.date_time

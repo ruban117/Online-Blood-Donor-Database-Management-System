@@ -129,9 +129,9 @@ if(isset($_POST['no'])){
             <div class="availability">
                 <p>Note:- If you click on the Hide Profile button your profile will be hided from all Members</p>
                 <?php if($data['availability']==1){?>
-                <p style="color: blue; font-weight: bold;">Your Profile Is Visible To All Donors</p>
+                <p style="color: blue; font-weight: bold;">Your Profile Is Visible To All Blood Requesters</p>
                 <?php }else{?>
-                <p>Your Profile Is Not Visible To All Donors</p>
+                <p>Your Profile Is Not Visible To All Blood Requesters</p>
                 <?php }?>
                 <div class="buttons">
                 <button type="button" class="btn hide btn-danger">Hide Profile</button>

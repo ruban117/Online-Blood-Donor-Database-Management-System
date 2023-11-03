@@ -150,4 +150,11 @@ class Consumerdb{
         $no_of_users=$stmt->fetchColumn();
         return $no_of_users;
     }
+
+    public function Block($email){
+        $sql2="UPDATE member SET is_block = 1 WHERE email= :email";
+        $stmt2=$this->conn->prepare($sql2);
+        $res=$stmt2->execute(["email"=>$email]);
+        return true;
+    }
 }
