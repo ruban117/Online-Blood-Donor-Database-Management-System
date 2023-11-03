@@ -4,9 +4,11 @@ $is_right=false;
 $success='';
 require_once "../Blood_Consumer_login_form/ConsumerDb.php";
 require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+require_once '../Mail/smtpmailer.php';
 session_start();
 $db=new Consumerdb();
 $db2=new Donordb();
+$m=new Mail();
 if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
 {
     header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
@@ -34,7 +36,7 @@ if(isset($_POST['fsub'])){
           ';
   $reqid=$datas['id'];
   $donid=$datass['id'];
-  $db2->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);
+  $m->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);
   $db->Contact_Details($reqid,$donid);
   $is_right=true;
   $success='Blood Request Sent Successfully';

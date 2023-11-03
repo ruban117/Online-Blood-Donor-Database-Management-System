@@ -1,9 +1,11 @@
 <?php
   require_once  'Admindb.php';
+  require_once '../Mail/smtpmailer.php';
   $has_errors=false;
   $err='';
   $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
   $db=new AdminDb();
+  $m=new Mail();
   if(isset($_POST['sub'])){
     $email=$_POST['email'];
     $pass=$_POST['pass'];
@@ -40,7 +42,7 @@
                <p>Online Blood Donors Database Management System</p><br>
                <p>obddms2023@gmail.com</p><br>';
 
-      $db->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
+      $m->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
       header("Location: ../OTPAREA/otp.php");
     }
     else if(!filter_var($nemail, FILTER_VALIDATE_EMAIL) || !preg_match($email_pattern, $nemail)){

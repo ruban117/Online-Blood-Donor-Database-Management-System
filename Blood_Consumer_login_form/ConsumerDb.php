@@ -157,4 +157,11 @@ class Consumerdb{
         $res=$stmt2->execute(["email"=>$email]);
         return true;
     }
+
+    public function UnBlock($email){
+        $sql2="UPDATE member SET is_block = 0 WHERE email= :email";
+        $stmt2=$this->conn->prepare($sql2);
+        $res=$stmt2->execute(["email"=>$email]);
+        return true;
+    }
 }

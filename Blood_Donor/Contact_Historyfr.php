@@ -5,8 +5,10 @@
   $error="";
   require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
   require_once "../Blood_Consumer_login_form/ConsumerDb.php";
+  require_once '../Mail/smtpmailer.php';
   $db=new Donordb();
   $db2=new Consumerdb();
+  $m=new Mail();
   if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
   {
       header("location: ../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php");
@@ -29,7 +31,7 @@
         Online Blood Donors Database Management System<br><br>
         Email:- obddms2023@gmail.com
       ';
-      $db->smtp_mailer($email,'OBDDMS: Blood Request Acepted', $msg);
+      $m->smtp_mailer($email,'OBDDMS: Blood Request Acepted', $msg);
     }
   }
 
@@ -45,7 +47,7 @@
         Online Blood Donors Database Management System<br><br>
         Email:- obddms2023@gmail.com
       ';
-      $db->smtp_mailer($email,'OBDDMS: Blood Request Rejected', $msg);
+      $m->smtp_mailer($email,'OBDDMS: Blood Request Rejected', $msg);
   }
 
   if(isset($_POST['rep'])){

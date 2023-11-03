@@ -1,17 +1,26 @@
 <?php
 require_once "ConsumerDb.php";
 require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+require_once '../Mail/smtpmailer.php';
 $has_errors=false;
 $err='';
 $db=new Consumerdb();
 $db2=new DonorDb();
+$m=new Mail();
 $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 if(isset($_POST['sub']))
 {
   $email=$_POST['email'];
   $password=$_POST['pass'];
 
-  if($db->Login($email,$password)==1)
+  $member=$db->Get_data($email);
+
+  if($member['is_block']==1){
+    $has_errors=true;
+    $err='Your Account Is Blocked Please Contact obddms2023@gmail.com';
+  }
+
+  else if($db->Login($email,$password)==1)
   {
     session_start();
     $_SESSION['loggedin']=true;
@@ -45,7 +54,7 @@ if(isset($_POST['sub']))
                <p>Online Blood Donors Database Management System</p><br>
                <p>obddms2023@gmail.com</p><br>';
 
-      $db2->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
+      $m->smtp_mailer($nemail,'OBDDMS: Login Email ID Verification', $html);
       header("Location: forgetotp.php");
     }
     else if(!filter_var($nemail, FILTER_VALIDATE_EMAIL) || !preg_match($email_pattern, $nemail)){

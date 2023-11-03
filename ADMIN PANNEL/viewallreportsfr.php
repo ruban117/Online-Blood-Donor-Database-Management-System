@@ -15,6 +15,8 @@
     }
     $no_error=false;
     $success='';
+    $err=false;
+    $error='';
 
     if(isset($_POST['sub'])){
       $mail=$_POST['rby'];
@@ -45,8 +47,10 @@
 
     if(isset($_POST['bsub'])){
       $email=$_POST['rt'];
+      $donor=$db2->Get_data($email);
+      $member=$db3->Get_data($email);
 
-      if($db2->exists($email) == 1){
+      if($db2->exists($email) == 1 && $donor['is_block']==0){
         $db2->Block($email);
         $msg2='
         Dear User,<br><br>
@@ -61,7 +65,7 @@
       $no_error=true;
       $success="User Blocked";
       }
-      else if($db3->exists($email) == 1){
+      else if($db3->exists($email) == 1 && $member['is_block']==0){
         $db3->Block($email);
         $msg2='
         Dear User,<br><br>
@@ -75,6 +79,51 @@
       $m->smtp_mailer($email,'OBDDMS: You Have Been Blocked', $msg2);
       $no_error=true;
       $success="User Blocked";
+      }
+      else{
+        $err=true;
+        $error='User Already Blocked!!';
+      }
+    }
+
+    if(isset($_POST['csub'])){
+      $email=$_POST['rep'];
+      $donor=$db2->Get_data($email);
+      $member=$db3->Get_data($email);
+
+      if($db2->exists($email) == 1 && $donor['is_block']==1){
+        $db2->UnBlock($email);
+        $msg2='
+        Dear User,<br><br>
+        Your account has been unblocked<br><br>
+        If you do any malpractice further your account will be blocked forever<br><br>
+        Regards,<br><br>
+        Social Service Investigating Team,<br><br>
+        Online Blood Doner Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $m->smtp_mailer($email,'OBDDMS: Your Account Unblocked', $msg2);
+      $no_error=true;
+      $success="User Unblocked";
+      }
+      else if($db3->exists($email) == 1 && $member['is_block']==1){
+        $db3->UnBlock($email);
+        $msg2='
+        Dear User,<br><br>
+        Your account has been unblocked<br><br>
+        If you do any malpractice further your account will be blocked forever<br><br>
+        Regards,<br><br>
+        Social Service Investigating Team,<br><br>
+        Online Blood Doner Database Management System<br><br>
+        Email:- obddms2023@gmail.com
+      ';
+      $m->smtp_mailer($email,'OBDDMS: Your Account Unblocked', $msg2);
+      $no_error=true;
+      $success="User Unblocked";
+      }
+      else{
+        $err=true;
+        $error='User Is Not Blocked!!';
       }
     }
 
@@ -172,9 +221,48 @@
       </div>
     </div>
   </div>
+
+  <!---------------------------------Unblock Modal---------------------------->
+  <div class="modal fade" id="unblockModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Unblock User</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body px-4">
+          <form action="" method="post" id="form-data">
+            <div class="form-group">
+              <input type="email" name='rep' class="form-control" id="rep" aria-describedby="emailHelp">
+            </div>
+            <br>
+            <div class="form-group">
+              <button type="submit" name="csub" id="fsub" class="btn btn-danger btn-block">Unblock User</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <?php if($no_error){?>
           <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo $success; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <?php }?>
+  <?php if($err){?>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo $error; ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <?php }?>
@@ -187,6 +275,8 @@
         <th scope="col" style="color: black;">Report Description</th>
         <th scope="col" style="color: black;">Send Warning</th>
         <th scope="col" style="color: black;">Block User</th>
+        <th scope="col" style="color: black;">Unblock User</th>
+        <th scope="col" style="color: black;">Status</th>
       </tr>
     </thead>
     <tbody>
@@ -198,6 +288,25 @@
         <td><?php echo $row['content']; ?></td>
         <td><button type="button" class="btn btn-warning warn">Send</button></td>
         <td><button type="button" class="btn btn-danger block">Block User</button></td>
+        <td><button type="button" class="btn btn-success unblock">Unblock User</button></td>
+        <td style="color:blue;"><?php 
+          $a=$db2->Get_data($row['reportie']);
+          $b=$db3->Get_data($row['reportie']);
+          if($db2->exists($row['reportie'])==1){
+            if($a['is_block']==1){
+              echo "<b>Blocked</b>";
+            }else{
+              echo "<b>Active</b>";
+            }
+          }else if($db3->exists($row['reportie'])==1){
+            if($b['is_block']==1){
+              echo "<b>Blocked</b>";
+            }else{
+              echo "<b>Active</b>";
+            }
+          }
+         ?></td>
+
       </tr>
       <?php $i++; }?>
     </tbody>
@@ -212,6 +321,7 @@
   let table = new DataTable('#myTable');
   let a=document.getElementsByClassName('warn');
   let b=document.getElementsByClassName('block');
+  let c=document.getElementsByClassName('unblock');
   Array.from(a).forEach((elements)=>{
     elements.addEventListener('click',(e)=>{
       $('#warnModal').modal('toggle');
@@ -231,6 +341,16 @@
       let c=e.target.parentNode.parentNode;
       let rept=c.getElementsByTagName("td")[1].innerText;
       rt.value=rept;
+    })
+  });
+
+  Array.from(c).forEach((elements)=>{
+    elements.addEventListener('click',(e)=>{
+      $('#unblockModal').modal('toggle');
+      console.log('Listened');
+      let c=e.target.parentNode.parentNode;
+      let rept=c.getElementsByTagName("td")[1].innerText;
+      rep.value=rept;
     })
   });
 </script>
