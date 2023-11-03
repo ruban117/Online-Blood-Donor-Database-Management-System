@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2023 at 06:41 AM
+-- Generation Time: Nov 03, 2023 at 09:17 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,9 +39,7 @@ CREATE TABLE `acceptance` (
 --
 
 INSERT INTO `acceptance` (`id`, `donor_email`, `req_email`, `accepted`) VALUES
-(6, 'rubanpathak706@gmail.com', 'rubanpathak706@gmail.com', 0),
-(7, 'rubanpathak706@gmail.com', 'soumendranathpathak@gmail.com', 1),
-(8, 'souvikbanerjee241@gmail.com', 'rubanpathak706@gmail.com', 1);
+(10, 'rubanpathak706@gmail.com', 'soumendranathpathak@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -88,10 +86,7 @@ CREATE TABLE `contact_details` (
 --
 
 INSERT INTO `contact_details` (`c_id`, `requester_id`, `donor_id`, `date_time`) VALUES
-(1, 1, 2, '2023-10-30 11:15:43'),
-(2, 1, 1, '2023-10-30 23:55:02'),
-(3, 2, 2, '2023-10-31 00:07:23'),
-(4, 2, 1, '2023-10-31 00:32:04');
+(7, 2, 2, '2023-11-03 23:12:35');
 
 -- --------------------------------------------------------
 
@@ -112,16 +107,18 @@ CREATE TABLE `donor` (
   `password` varchar(50) NOT NULL,
   `availability` varchar(1) DEFAULT '1',
   `age` int(3) NOT NULL,
-  `picture` varchar(255) DEFAULT '../images/Default.png'
+  `picture` varchar(255) DEFAULT '../images/Default.png',
+  `is_block` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `donor`
 --
 
-INSERT INTO `donor` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blood_group`, `state`, `city`, `password`, `availability`, `age`, `picture`) VALUES
-(1, 'Souvik Banerjee', 'souvikbanerjee241@gmail.com', '7439497726', '294/5, sarat sarani balir more, hooghly.', '712103', 'A+', 'West Bengal', 'Chinsurah', 'Souvik@123', '1', 18, '../images/Default.png'),
-(2, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, Dakhin Baishnab Para Road,Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '1234', '1', 20, '../images/20231001_204231.jpg');
+INSERT INTO `donor` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blood_group`, `state`, `city`, `password`, `availability`, `age`, `picture`, `is_block`) VALUES
+(1, 'Souvik Banerjee', 'souvikbanerjee241@gmail.com', '7439497726', '294/5, sarat sarani balir more, hooghly.', '712103', 'A+', 'West Bengal', 'Chinsurah', 'Souvik@123', '1', 18, '../images/Default.png', 0),
+(2, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, Dakhin Baishnab Para Road,Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '5454', '1', 20, '../images/20231001_204231.jpg', 0),
+(3, 'Anik Patra', 'anikpatra.tih@gmail.com', '9477154362', 'Uttarpara', '743166', 'O+', 'West Bengal', 'Uttarpara', '8585', '1', 40, '../images/Screenshot (189).png', 0);
 
 -- --------------------------------------------------------
 
@@ -141,16 +138,17 @@ CREATE TABLE `member` (
   `city` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
   `picture` varchar(255) DEFAULT '../images/Default.png',
-  `age` int(11) DEFAULT NULL
+  `age` int(11) DEFAULT NULL,
+  `is_block` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blood_group`, `state`, `city`, `password`, `picture`, `age`) VALUES
-(1, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, Dakhin Baishnab Para Road,Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '1234', '../images/R.png', 20),
-(2, 'Soumendra Natha Pathak', 'soumendranathpathak@gmail.com', '7890329221', 'Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '1234', '../images/Default.png', 50);
+INSERT INTO `member` (`id`, `name`, `email`, `phone`, `address`, `pincode`, `blood_group`, `state`, `city`, `password`, `picture`, `age`, `is_block`) VALUES
+(1, 'Ruban Pathak', 'rubanpathak706@gmail.com', '6289814242', '28, Dakhin Baishnab Para Road,Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '1234', '../images/R.png', 20, 0),
+(2, 'Soumendra Natha Pathak', 'soumendranathpathak@gmail.com', '7890329221', 'Naihati', '743166', 'B+', 'West Bengal', 'Naihati', '1234', '../images/Default.png', 50, 0);
 
 -- --------------------------------------------------------
 
@@ -190,9 +188,9 @@ CREATE TABLE `reports` (
 --
 
 INSERT INTO `reports` (`rid`, `reporter`, `reportie`, `content`) VALUES
-(1, 'rubanpathak706@gmail.com', 'rubanpathak706@gmail.com', 'Spam User'),
 (2, 'rubanpathak706@gmail.com', 'soumendranathpathak@gmail.com', 'Spam User'),
-(3, 'rubanpathak706@gmail.com', 'rubanpathak706@gmail.com', 'Spam User');
+(4, 'rubanpathak706@gmail.com', 'anikpatra.tih@gmail.com', 'Demands Money'),
+(5, 'soumendranathpathak@gmail.com', 'rubanpathak706@gmail.com', 'saome');
 
 --
 -- Indexes for dumped tables
@@ -252,7 +250,7 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `acceptance`
 --
 ALTER TABLE `acceptance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -264,13 +262,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `contact_details`
 --
 ALTER TABLE `contact_details`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `donor`
 --
 ALTER TABLE `donor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -288,7 +286,7 @@ ALTER TABLE `not_member`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
