@@ -101,6 +101,12 @@
 
 - Similar to the registration process for Blood Requesters (Members), with additional age field constraints.
 
+![Screenshot (95)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/6beb49ac-4fe2-4852-b9c8-d2ddeeaa3510)
+
+![Screenshot (96)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/3dfff42d-5223-4ed6-b349-54c2269e7d73)
+
+
+
 ### Login for Blood Donors
 
 - Registered donors can log in by entering their email id and password.
