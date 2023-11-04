@@ -45,9 +45,11 @@
 
 - Blood Donors can access a login/signup page tailored for them, and Blood Requesters (Members) have a distinct link for their login/signup.
 
-![Screenshot (81)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/d8f9db5b-1ec0-4635-bdbb-95344a8423eb)
+![Screenshot (81)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/e0aa9ce4-704c-4b44-b4b7-bbb81721be13)
 
-![Screenshot (94)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/078ecd2d-c952-47c3-a2e7-f17f020a412d)
+
+![Screenshot (94)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/be266fc5-a671-4178-b235-241d4de108d7)
+
 
 
 ### Footer Section
@@ -58,14 +60,16 @@
 
 - A copyright symbol is displayed to safeguard content and address copyright concerns.
 
-![Screenshot (84)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/5557d60f-8289-4ac4-a66b-b1d3ff548715)
+![Screenshot (84)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/f2015b05-8ad0-4c8d-92dd-5bac438e113c)
+
 
 
 ### Contact Us
 
 - A dedicated feedback form allows users, including Blood Donors and Blood Requesters (Members), to share their experiences with the project.
 
-![Screenshot (89)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/fb8917ac-22c2-4882-856b-ae1bbb8655b0)
+![Screenshot (89)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/932cc5f6-18e3-4952-9ebf-e0faff6dd73a)
+
 
 
 ### Anonymous Users/Non-Verified Users
@@ -76,7 +80,8 @@
 
 - Non-logged-in Blood Donors cannot initiate blood donations until they log in.
 
-![Screenshot (87)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/9ea5ed94-78c0-450c-a078-173914c3c7c6)
+![Screenshot (87)](https://github.com/ruban117/Online-Blood-Donor-Database-Management-System/assets/102974324/6853fcef-2deb-4e7c-a88d-f91bea1fb515)
+
 
 ## User Registration
 
