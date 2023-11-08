@@ -1,6 +1,7 @@
 <?php
 require_once "donordb.php";
 require_once '../Mail/smtpmailer.php';
+error_reporting(0);
 $has_errors=false;
 $err='';
 $db=new Donordb();
@@ -71,8 +72,8 @@ if(isset($_POST['sub']))
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="images/icon" href="../blood.png">
   <title>Spread The Red (Blood Donor Login)</title>
-  <link rel="icon" type="images/x-icon" href="../blood.png">
   <link rel="stylesheet" href="loginstyle.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -153,6 +154,10 @@ if(isset($_POST['sub']))
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     // jQuery to handle the form submission and show the modal
+    let p=document.getElementById('fsub');
+    p.addEventListener('click',(e)=>{
+      p.textContent = 'Please Wait...';
+    })
     document.getElementsByTagName('p')[0].addEventListener('click',(e)=>{
       $("#myModal").modal("show");
     })

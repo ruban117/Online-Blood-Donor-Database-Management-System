@@ -26,7 +26,7 @@
         margin-left:20px;
 
     }
-    @media only screen and (max-width: 425px) and (min-width: 200px) {
+    @media (max-width: 425px) and (min-width: 200px) {
         .foot2 a{
             font-size:12px;
             margin-left:20px;

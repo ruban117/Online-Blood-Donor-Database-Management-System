@@ -197,7 +197,7 @@ if(isset($_POST['sub']))
             <label for="age" class="form-label">Age</label>
             <input type="number" name="age" class="form-control" id="pass" required>
           </div>
-          <button type="submit" class="btn btn-primary" name="sub">Submit</button>
+          <button type="submit" class="btn btn-primary" name="sub" id="fsub">Submit</button>
         </form>
         <p id="new">Back to <a href="../BLOOD DONOR LOGIN FORM/Donor_LoginForm.php" style="color:#fe0000;">LogIn</a></p>
       </div>
@@ -208,5 +208,13 @@ if(isset($_POST['sub']))
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
 </body>
+
+<script>
+    // jQuery to handle the form submission and show the modal
+    let p=document.getElementById('fsub');
+    p.addEventListener('click',(e)=>{
+      p.textContent = 'Please Wait...';
+    })
+</script>
 
 </html>
