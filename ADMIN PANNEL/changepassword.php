@@ -84,7 +84,7 @@
             </ul>
         </div>
         <div class="main_content">
-            <div id="Change_Password" style="display:'';align-items: center;justify-content: center;">
+            <div id="Change_Password" style="align-items: center;justify-content: center;">
                 <div class="container">
                     <form method="post" action="">
                         <?php if($haserr){?>
