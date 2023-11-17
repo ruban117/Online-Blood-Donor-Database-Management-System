@@ -182,7 +182,7 @@ if(isset($_POST['rep'])){
               <input type="hidden" name="email" class="form-control" id="email" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-              <button type="submit" name="fsub" id="fsub" class="btn btn-danger btn-block">Send Blood Request</button>
+              <button type="submit" name="fsub" id="ffsub" class="btn btn-danger btn-block">Send Blood Request</button>
             </div>
           </form>
         </div>
@@ -204,7 +204,10 @@ if(isset($_POST['rep'])){
     let table = new DataTable('#myTable');
     let a = document.getElementsByClassName('one');
     let b = document.getElementsByClassName('three');
-
+    let wait=document.getElementById('ffsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
+    });
 
     Array.from(a).forEach((elements)=>{
     elements.addEventListener('click',(e)=>{

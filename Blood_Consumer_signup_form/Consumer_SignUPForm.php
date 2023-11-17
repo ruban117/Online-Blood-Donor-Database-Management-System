@@ -190,7 +190,7 @@ if(isset($_POST['sub']))
             <label for="exampleInputPassword1" class="form-label">Age</label>
             <input type="number" name="age" class="form-control" id="pass" required>
           </div>
-          <button type="submit" name="sub" class="btn btn-primary">Submit</button>
+          <button type="submit" name="sub" id="fsub" class="btn btn-primary">Submit</button>
           </button>
         </form>
         <p id="new">Back to <a href="../Blood_Consumer_login_form/Consumer_LoginForm.php" style="color:#fe0000;">LogIn</a></p>
@@ -208,6 +208,11 @@ if(isset($_POST['sub']))
         event.preventDefault();
         $("#myModal").modal("show");
       });
+    });
+
+    let wait=document.getElementById('fsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
     });
   </script>
 </body>

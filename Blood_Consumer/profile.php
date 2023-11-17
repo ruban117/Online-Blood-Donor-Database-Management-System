@@ -50,7 +50,7 @@ $data=$db->Get_data($_SESSION['username']);
 ?>
     <div class="wrapper">
         <div class="sidebar">
-            <h2>Members(Requesters)</h2>
+            <h2>Members<br>(Requesters)</h2>
             <ul>
                 <li id="li1"><a href="consumer.php" id="D"><i class="fas fa-home"></i>Dashboard</a></li>
                 <li id="li2"><a href="search_donors.php" id="A"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;Search Donors</a></li>

@@ -173,7 +173,7 @@
             </div>
             <br>
             <div class="form-group">
-              <button type="submit" name="sub" id="fsub" class="btn btn-danger btn-block">Send</button>
+              <button type="submit" name="sub" id="ffffsub" class="btn btn-danger btn-block">Send</button>
             </div>
           </form>
         </div>
@@ -208,7 +208,7 @@
             </div>
             <br>
             <div class="form-group">
-              <button type="submit" name="bsub" id="fsub" class="btn btn-danger btn-block">Block User</button>
+              <button type="submit" name="bsub" id="fffsub" class="btn btn-danger btn-block">Block User</button>
             </div>
           </form>
         </div>
@@ -241,7 +241,7 @@
             </div>
             <br>
             <div class="form-group">
-              <button type="submit" name="csub" id="fsub" class="btn btn-danger btn-block">Unblock User</button>
+              <button type="submit" name="csub" id="ffsub" class="btn btn-danger btn-block">Unblock User</button>
             </div>
           </form>
         </div>
@@ -322,6 +322,18 @@
   let a=document.getElementsByClassName('warn');
   let b=document.getElementsByClassName('block');
   let c=document.getElementsByClassName('unblock');
+  let wait=document.getElementById('ffsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
+    });
+    let wait2=document.getElementById('fffsub');
+    wait2.addEventListener('click',(e)=>{
+      wait2.textContent = 'Please Wait...';
+    });
+    let wait3=document.getElementById('ffffsub');
+    wait3.addEventListener('click',(e)=>{
+      wait3.textContent = 'Please Wait...';
+    });
   Array.from(a).forEach((elements)=>{
     elements.addEventListener('click',(e)=>{
       $('#warnModal').modal('toggle');

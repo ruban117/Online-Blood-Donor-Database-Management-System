@@ -119,7 +119,7 @@ if(isset($_POST['sub']))
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="phone" class="form-label">Phone Number</label>
@@ -210,10 +210,9 @@ if(isset($_POST['sub']))
 </body>
 
 <script>
-    // jQuery to handle the form submission and show the modal
-    let p=document.getElementById('fsub');
-    p.addEventListener('click',(e)=>{
-      p.textContent = 'Please Wait...';
+    let wait=document.getElementById('fsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
     })
 </script>
 

@@ -46,19 +46,6 @@
     top: 10px;
 }
 
-/* Create the underline effect using a pseudo-element */
-.stylish-underline::after {
-    content: ''; /* Required for pseudo-elements */
-    position: absolute; /* Position the underline absolutely */
-    bottom: -3px; /* Position it slightly below the text */
-    top: 40px;
-    left: 122px; /* Start from the left edge of the heading */
-    width: 50%; /* Make it span the full width of the heading */
-    height: 2px; /* Customize the underline's thickness */
-    background-color: #FE0000; /* Customize the underline color */
-    font-weight: bold;
-}
-
 .formfield{
     position: relative;
     display: flex;

@@ -186,7 +186,7 @@
               <input type="hidden" name="reqemail" id="reqemail" class="form-control" id="nemail" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-              <button type="submit" name="accept" id="fsub" class="btn btn-primary btn-block">Accept</button>
+              <button type="submit" name="accept" id="fffsub" class="btn btn-primary btn-block">Accept</button>
             </div>
           </form>
         </div>
@@ -208,7 +208,7 @@
               <input type="hidden" name="reqemail2" id="reqemail2" class="form-control" id="nemail" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
-              <button type="submit" name="reject" id="fsub" class="btn btn-warning btn-block">Reject</button>
+              <button type="submit" name="reject" id="ffsub" class="btn btn-warning btn-block">Reject</button>
             </div>
           </form>
         </div>
@@ -259,6 +259,15 @@
   let a=document.getElementsByClassName('warn');
   let b=document.getElementsByClassName('warn2');
   let c=document.getElementsByClassName('report');
+
+  let wait=document.getElementById('ffsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
+    });
+    let wait2=document.getElementById('fffsub');
+    wait2.addEventListener('click',(e)=>{
+      wait2.textContent = 'Please Wait...';
+    });
   Array.from(a).forEach((elements)=>{
     elements.addEventListener('click',(e)=>{
       $('#acceptModal').modal('toggle');

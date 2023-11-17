@@ -2,6 +2,7 @@
 require_once "ConsumerDb.php";
 require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 require_once '../Mail/smtpmailer.php';
+error_reporting(0);
 $has_errors=false;
 $err='';
 $db=new Consumerdb();
@@ -159,6 +160,10 @@ if(isset($_POST['sub']))
     document.getElementsByTagName('p')[0].addEventListener('click',(e)=>{
       $("#myModal").modal("show");
     })
+    let wait=document.getElementById('fsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
+    });
   </script>
 </body>
 

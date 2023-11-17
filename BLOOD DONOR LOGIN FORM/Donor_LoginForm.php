@@ -112,8 +112,8 @@ if(isset($_POST['sub']))
 
           <button type="submit" class="btn btn-primary text-center" name="sub">Submit</button>
         </form>
-        <p class="forget" data-toggle="modal" data-target="#myModal">Forget Password?</p>
-        <p id="new">New User? <a href="../BLOOD DONOR SIGNUP FORM/Donor_SignUPForm.php" style="color:#fe0000;">Sign Up</a></p>
+        <p class="forget">Forget Password?</p>
+        <p id="new">New User?<a href="../BLOOD DONOR SIGNUP FORM/Donor_SignUPForm.php" style="color:#fe0000;">Sign Up</a></p>
       </div>
     </div>
   </div>
@@ -154,13 +154,13 @@ if(isset($_POST['sub']))
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     // jQuery to handle the form submission and show the modal
-    let p=document.getElementById('fsub');
-    p.addEventListener('click',(e)=>{
-      p.textContent = 'Please Wait...';
-    })
     document.getElementsByTagName('p')[0].addEventListener('click',(e)=>{
       $("#myModal").modal("show");
-    })
+    });
+    let wait=document.getElementById('fsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
+    });
   </script>
 </body>
 

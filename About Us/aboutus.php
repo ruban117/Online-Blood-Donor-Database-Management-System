@@ -38,7 +38,8 @@
                 <h1>Our Misson</h1>
                 <img src="goal.png" class="img-fluid pic">
             </div>
-            <div class="col textmid">Our mission is to leverage technology to connect blood donors and recipients, facilitate life-saving donations, and promote a culture of voluntary and regular blood donation. We are dedicated to: Saving Lives, Streamlined Access, Empowering Communities, Education and Awareness, Efficiency and Accuracy.</div>
+            <div class="col textmid">Our mission is to leverage technology to connect blood donors and recipients, facilitate life-saving donations, and promote a culture of voluntary and regular blood donation. We are dedicated to: Saving Lives, Streamlined Access, Empowering Communities, Education and Awareness, Efficiency and Accuracy.
+            </div>
         </div>
     </div>
     <?php include "Assests/_footer.php" ?>
