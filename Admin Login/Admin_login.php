@@ -147,6 +147,10 @@
     document.getElementsByTagName('p')[0].addEventListener('click', (e) => {
       $("#myModal").modal("show");
     })
+    let wait=document.getElementById('fsub');
+    wait.addEventListener('click',(e)=>{
+      wait.textContent = 'Please Wait...';
+    });
   </script>
 </body>
 

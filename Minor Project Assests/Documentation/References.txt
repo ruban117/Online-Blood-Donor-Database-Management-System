@@ -2,6 +2,3 @@
 [7] Introduction to ms office project 2007 : Microsoft Ignite [https://learn.microsoft.com/en-us/previous-versions/office/]
 [8] Fundamentals of Software Engineering, 5th Edition by Rajib Mall [ Book Published: 30 November 2018] 
 [9] Apache Spark in Action 2nd Edition by Jean-Georges Perrin [ Book Published: June 2, 2020 ]   
-
-
-
