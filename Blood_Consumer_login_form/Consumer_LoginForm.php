@@ -1,12 +1,10 @@
 <?php
 require_once "ConsumerDb.php";
-require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 require_once '../Mail/smtpmailer.php';
 error_reporting(0);
 $has_errors=false;
 $err='';
 $db=new Consumerdb();
-$db2=new DonorDb();
 $m=new Mail();
 $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 if(isset($_POST['sub']))
@@ -43,7 +41,7 @@ if(isset($_POST['sub']))
       session_start();
       $_SESSION['mail']=$nemail;
       $_SESSION['npass']=$npass;
-      $_SESSION['otp']=true;
+      $_SESSION['loggedin']=true;
       $otp=$db->generateOTP();
       $_SESSION['numotp']=$otp;
       $html='<p>Dear User</p><br>

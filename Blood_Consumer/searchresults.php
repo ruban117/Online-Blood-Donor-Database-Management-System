@@ -15,12 +15,12 @@ if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true))
     exit; 
 }
 $data=$db->Search_Donors($_SESSION['pin'],$_SESSION['blood']);
-$datas=$db->Get_data($_SESSION['username']);
+$datas=$db->Get_data($_SESSION['username']); #Member's Data
 if(isset($_POST['fsub'])){
-  $mail=$_POST['email'];
-  $senderemail=$_SESSION['username'];
-  $datass=$db2->Get_data($mail);
-  $html='Dear '. $datass['name'].',<br>
+  $mail=$_POST['email'];  #Donor's Email
+  $senderemail=$_SESSION['username']; #Member's Email
+  $datass=$db2->Get_data($mail);  #Donor's Datas
+  $html='Dear '. $datass['name'].',<br> 
 
           We extend our heartfelt gratitude for your noble spirit. A blood request from ' . $datas['name'] . ' is a call for hope, and you have the opportunity to be a lifeline. By donating your blood to this individual, you can become a part of a compassionate community.
           <br><br>
@@ -34,9 +34,9 @@ if(isset($_POST['fsub'])){
           
           This revised email conveys the importance of the recipients blood donation and fosters a sense of community and hope.
           ';
-  $reqid=$datas['id'];
-  $donid=$datass['id'];
-  $m->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);
+  $reqid=$datas['id'];  #Member's/Reqid=Requester Id
+  $donid=$datass['id']; #Donor's Id
+  $m->smtp_mailer($mail,'OBDDMS: Reciving Blood Donation Request', $html);#donor email
   $db->Contact_Details($reqid,$donid);
   $is_right=true;
   $success='Blood Request Sent Successfully';
@@ -149,10 +149,10 @@ if(isset($_POST['rep'])){
         <div class="modal-body">
           <form method="post" action="">
             <div class="mb-3">
-              <input type="hidden" name="reqemail" value="<?php echo $datas['email'];?>" class="form-control" id="nemail" aria-describedby="emailHelp">
+              <input type="email" name="reqemail" value="<?php echo $datas['email'];?>" class="form-control" id="nemail" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <input type="hidden" name="donemail"  class="form-control" id="donemail" aria-describedby="emailHelp">
+              <input type="email" name="donemail"  class="form-control" id="donemail" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
               <label for="address">Describe Your Problem</label>
@@ -179,7 +179,7 @@ if(isset($_POST['rep'])){
         <div class="modal-body">
           <form method="post" action="">
             <div class="mb-3">
-              <input type="hidden" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+              <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <button type="submit" name="fsub" id="ffsub" class="btn btn-danger btn-block">Send Blood Request</button>

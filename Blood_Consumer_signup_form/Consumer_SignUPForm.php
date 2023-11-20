@@ -1,10 +1,8 @@
 <?php
 
 require_once '../Blood_Consumer_login_form/ConsumerDb.php';
-require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
 require_once '../Mail/smtpmailer.php';
 $db=new Consumerdb();
-$db2=new DonorDb();
 $m=new Mail();
 $has_error=false;
 $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
@@ -57,8 +55,6 @@ if(isset($_POST['sub']))
     $_SESSION['city']=$city;
     $_SESSION['password']=$password;
     $_SESSION['age']=$age;
-    
-    
     $_SESSION['otp']=$otp;
     $html='<p>Dear Blood Member/Requester</p><br>
                <p>Your One Time Password (OTP) for creating account: <b>'.$otp.'</b></p><br>

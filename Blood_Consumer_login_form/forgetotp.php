@@ -4,7 +4,7 @@
   $err='';
   require_once 'ConsumerDb.php';
   $db=new Consumerdb();
-  if (!isset($_SESSION['otp']) || ($_SESSION['otp'] != true)) {
+  if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) {
       header("location: Consumer_LoginForm.php");
       exit;
   }
