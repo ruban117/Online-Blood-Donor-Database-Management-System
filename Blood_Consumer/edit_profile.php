@@ -29,7 +29,7 @@ if(isset($_POST['save_change']))
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
         $uploadDir = '../images/'; 
-        $imageFile = $uploadDir . basename($_FILES['image']['name']);
+        $imageFile = $uploadDir . basename($_FILES['image']['name']); 
         
         // Move the uploaded image to the desired directory
         if (move_uploaded_file($_FILES['image']['tmp_name'], $imageFile)) {

@@ -1,31 +1,31 @@
 <?php
-session_start();
-$has_error=false;
-$error="";
-$is_right=false;
-$success='';
-require_once "../Blood_Consumer_login_form/ConsumerDb.php";
-require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
-$db=new Consumerdb();
-$db2=new Donordb();
-if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
-{
-    header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
-    exit; 
-}
+  session_start();
+  $has_error=false;
+  $error="";
+  $is_right=false;
+  $success='';
+  require_once "../Blood_Consumer_login_form/ConsumerDb.php";
+  require_once "../BLOOD DONOR LOGIN FORM/donordb.php";
+  $db=new Consumerdb();
+  $db2=new Donordb();
+  if (!isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] != true)) 
+  {
+      header("location: ../Blood_Consumer_login_form/Consumer_LoginForm.php");
+      exit; 
+  }
 
-$data=$db->Contacted_Donors($_SESSION['username']);
-$datas=$db->Get_data($_SESSION['username']);
+  $data=$db->Contacted_Donors($_SESSION['username']);
+  $datas=$db->Get_data($_SESSION['username']);
 
-if(isset($_POST['rep'])){
-  $repby=$_POST['reporter'];
-  $repto=$_POST['reportie'];
-  $content=$_POST['content'];
+  if(isset($_POST['rep'])){
+    $repby=$_POST['reporter'];
+    $repto=$_POST['reportie'];
+    $content=$_POST['content'];
 
-  $db->Report($repby,$repto,$content);
-  $is_right=true;
-  $success='Report Sent Successfully We Will Surely Investigate It!!!';
-}
+    $db->Report($repby,$repto,$content);
+    $is_right=true;
+    $success='Report Sent Successfully We Will Surely Investigate It!!!';
+  }
 ?>
 
 
