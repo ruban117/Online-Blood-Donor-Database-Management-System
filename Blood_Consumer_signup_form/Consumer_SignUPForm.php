@@ -35,11 +35,6 @@ if(isset($_POST['sub']))
     $error="password did not matched";
 
   }
-  else if($age<18)
-  {
-    $has_error=true;
-    $error="unable to create account ! because you are not adult";
-  }
   else
   {
     $otp=$db->generateOTP();
